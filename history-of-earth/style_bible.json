@@ -1,0 +1,30 @@
+{
+  "project_name": "History of Earth",
+  "target_art_style": "stylized_2d_flat_illustration",
+  "aspect_ratio": "16:9",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "typography": {
+    "title_font": "Cinzel",
+    "subtitle_font": "Inter",
+    "caption_font": "Inter-Bold"
+  },
+  "palettes": {
+    "hadean": {
+      "magma": "#D32F2F",
+      "molten_core": "#FF5722",
+      "basalt_crust": "#212121",
+      "atmospheric_haze": "#4E342E",
+      "primordial_ocean": "#1A237E",
+      "steam": "#ECEFF1"
+    }
+  },
+  "style_prompt_fragment": "Stylized 2D flat scientific vector art, clean layered silhouettes with parallax depth, moody atmospheric gradients, documentary graphic novel aesthetic, no photorealism, no 3D rendering.",
+  "visual_rules": [
+    "Maintain clear distinct foreground, midground, and background layers for 2.5D parallax pans.",
+    "Color palette must match the era definition in style_bible.json.",
+    "No human figures in pre-human eras."
+  ]
+}

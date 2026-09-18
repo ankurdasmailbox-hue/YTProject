@@ -1,0 +1,100 @@
+# ==============================================================================
+# Security & Credentials (CRITICAL - NEVER COMMIT TO GIT)
+# ==============================================================================
+# Environment files containing API keys (Gemini, YouTube, TTS, Image Gen, etc.)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Always allow committing the template example file
+!.env.example
+
+# Google / YouTube OAuth credentials and tokens
+client_secret*.json
+token*.json
+credentials.json
+*secret*.json
+*.pem
+*.key
+*.pfx
+*.p12
+
+# ==============================================================================
+# Pipeline Outputs & Rendered Media (700MB+ of generated video/audio)
+# GitHub blocks files > 100MB and repositories should not store generated binaries
+# ==============================================================================
+output/
+**/output/
+
+# Temporary video render clips in working directories
+temp_*.mp4
+temp_act_*.mp4
+*_temp.mp4
+*.tmp
+
+# ==============================================================================
+# Database & Pipeline Runtime State
+# ==============================================================================
+state.db
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ==============================================================================
+# Python & Virtual Environments
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==============================================================================
+# IDEs & Editor Configuration
+# ==============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ==============================================================================
+# Operating System Artifacts
+# ==============================================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ==============================================================================
+# Logs
+# ==============================================================================
+*.log
+logs/

@@ -1,0 +1,20 @@
+channel:
+  name: "History of Earth"
+  brand_account: true
+  timezone: "Asia/Kolkata"
+schedule:
+  weekday_mode: "batch_unattended"
+  weekend_gates: ["saturday", "sunday"]
+  buffer_weeks_target: 3
+tools:
+  llm_provider: "gemini"
+  image_provider: "PLACEHOLDER_VERIFY_CURRENT_FREE_TIER"
+  tts_provider_primary: "cloud_tts_PLACEHOLDER"
+  tts_provider_fallback: "piper_local"
+compliance:
+  ai_disclosure_mode: "auto_evaluate"
+  kids_guard_strict: true
+  variation_matrix_max_shared_dims: 2
+youtube_api:
+  quota_daily_units: 10000
+  upload_daily_cap: 100

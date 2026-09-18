@@ -1,0 +1,34 @@
+asset_id,filename,asset_type,source_url,licence_type,attribution_text,used_in_episodes
+hadean_landscape_01_theia_impact,theia_impact.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_magma_ocean,magma_ocean.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_torrential_rain,torrential_rain.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_jack_hills_zircon,jack_hills_zircon.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_late_bombardment,late_bombardment.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_hydrothermal_vent,hydrothermal_vent.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_life_spark_cliffhanger,life_spark_cliffhanger.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_master_audio,master_narration.mp3,audio/mp3,edge_tts://en-US-ChristopherNeural,Commercial Use Permitted,Microsoft Neural TTS,hadean_landscape_01
+hadean_landscape_01_shot_01_ground_feet,shot_01_ground_feet.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_shot_02_volcanic_gas,shot_02_volcanic_gas.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_shot_03_theia_approach,shot_03_theia_approach.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_shot_04_theia_impact,shot_04_theia_impact.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_shot_02_close_moon,shot_02_close_moon.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_landscape_01_ambient_drone,hadean_ambient_drone.mp3,audio/mp3,local://ffmpeg_synthesizer,CC0 Public Domain,Custom Synthesized Atmospheric Bed,hadean_landscape_01
+hadean_landscape_01_shot_02_core_furnace,shot_02_core_furnace.jpg,image/jpeg,local://ai_cinematic_pipeline,Custom Commercial Production Asset,History of Earth Pipeline,hadean_landscape_01
+hadean_map_02_animated_scene_01,act_01_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_02,act_02_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_03,act_03_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_04,act_04_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_05,act_05_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_06,act_06_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_07,act_07_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_master_audio,master_narration.mp3,audio/mp3,edge_tts://en-US-ChristopherNeural,Commercial Use Permitted,Microsoft Neural TTS,hadean_map_02
+hadean_map_02_mild_soundtrack,mild_background_score.mp3,audio/mp3,local://universal_soundtrack_generator,CC0 Public Domain,Custom Synthesized Mild Soundtrack Bed,hadean_map_02
+hadean_map_02_animated_scene_01,act_01_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_02,act_02_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_03,act_03_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_04,act_04_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_05,act_05_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_06,act_06_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_animated_scene_07,act_07_animated.mp4,video/mp4,local://procedural_cinematic_engine,Custom Commercial Production Asset,History of Earth Pipeline,hadean_map_02
+hadean_map_02_master_audio,master_narration.mp3,audio/mp3,edge_tts://en-US-ChristopherNeural,Commercial Use Permitted,Microsoft Neural TTS,hadean_map_02
+hadean_map_02_mild_soundtrack,mild_background_score.mp3,audio/mp3,local://universal_soundtrack_generator,CC0 Public Domain,Custom Synthesized Mild Soundtrack Bed,hadean_map_02

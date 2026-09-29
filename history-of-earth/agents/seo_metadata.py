@@ -1,12 +1,114 @@
 """
-SEO & Metadata Agent for History of Earth.
-Generates compliant metadata JSON adhering to YouTube guidelines, including
-high-retention titles, sourced description bullet lists, and timestamped chapters.
+SEO & Metadata Agent for History of Earth (Upgraded A/B CTR & High-RPM Engine).
+Adopts YouTube growth & monetization engineering principles:
+1. "Obsess Over CTR": Produces 3 tested Title Formulas for YouTube Studio's free A/B Test & Compare.
+2. 3 Alternate Description Hooks (above-the-fold 2-line teasers).
+3. High-RPM Keyword Optimization: Strategically integrates high-eCPM planetary science / astrophysics / geology tags.
+4. Generates both metadata.json and ab_packaging.json.
+100% Zero-Subscription, Local Python.
 """
 
 import os
 import json
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
+
+
+def generate_ab_titles(era: str, pillar: str, working_title: str) -> List[Dict[str, str]]:
+    """
+    Generates 3 distinct high-CTR title variations utilizing proven psychological hooks:
+    1. Curiosity Gap / Paradox
+    2. Forensic Mystery / Cold Case
+    3. Kinetic Stakes / Astronomical Cataclysm
+    """
+    norm_era = era.strip().capitalize()
+    norm_pillar = pillar.strip().capitalize()
+
+    if norm_era == "Hadean" and norm_pillar == "Map":
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Paradox",
+                "title": "Earth Had No Tectonic Plates For 500 Million Years — How Did It Survive?",
+                "rationale": "Directly confronts the viewer with an apparent impossibility; triggers high cognitive dissonance."
+            },
+            {
+                "variant": "B",
+                "formula": "The Forensic Detective Mystery",
+                "title": "The 500-Million-Year Crime Scene: Why Earth's First Crust Vanished",
+                "rationale": "Frames scientific geophysics as an unsolved detective investigation."
+            },
+            {
+                "variant": "C",
+                "formula": "The High-Stakes Kinetic Event",
+                "title": "When Earth Was Trapped in a Single Rocky Cage: The Stagnant Lid",
+                "rationale": "High drama, evocative visual language, and authoritative terminology."
+            }
+        ]
+    elif norm_era == "Hadean" and norm_pillar == "Landscape":
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Paradox",
+                "title": "Earth Had Oceans Before It Had Solid Ground — The Impossible Dawn",
+                "rationale": "Inverts common assumptions about Earth's planetary formation."
+            },
+            {
+                "variant": "B",
+                "formula": "The High-Stakes Kinetic Event",
+                "title": "When a Mars-Sized Planet Smashed into Earth at 25,000 MPH",
+                "rationale": "Concrete speed, colossal planetary collision stakes, massive broad appeal."
+            },
+            {
+                "variant": "C",
+                "formula": "The Forensic Detective Mystery",
+                "title": "Hadean: A World of Fire and Rain — When Earth Had No Ground",
+                "rationale": "Documentary-authoritative with visceral sensory contrast."
+            }
+        ]
+    elif norm_era == "Hadean" and ("air" in norm_pillar.lower() or "ocean" in norm_pillar.lower()):
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Paradox",
+                "title": "Earth Had a Green Ocean and a Poison Sky For 500 Million Years",
+                "rationale": "Overturns common assumptions about blue oceans and white clouds; triggers deep curiosity."
+            },
+            {
+                "variant": "B",
+                "formula": "The Forensic Detective Mystery",
+                "title": "The Sky Was Poison and the Rain Never Stopped: Inside Earth's First Ocean",
+                "rationale": "High sensory contrast and visceral drama grounded in peer-reviewed thermodynamics."
+            },
+            {
+                "variant": "C",
+                "formula": "The High-Stakes Kinetic Event",
+                "title": "When a 200-Atmosphere Steam Sky Collapsed into 1,000 Years of Boiling Rain",
+                "rationale": "Extreme physical scale and astronomical consequence that hooks lovers of hard science documentaries."
+            }
+        ]
+    else:
+        # Dynamic generic fallback formulas for any era/pillar
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Paradox",
+                "title": f"The Impossible Era: What Science Got Wrong About the {norm_era}",
+                "rationale": "Challenges consensus and sparks immediate curiosity."
+            },
+            {
+                "variant": "B",
+                "formula": "The Forensic Mystery",
+                "title": f"{norm_era}: {working_title} — The Lost Geologic Record",
+                "rationale": "Authoritative documentary inquiry framing."
+            },
+            {
+                "variant": "C",
+                "formula": "The High-Stakes Event",
+                "title": f"When the World Changed Forever: Inside the {norm_era} {norm_pillar}",
+                "rationale": "Epochal transformation stakes."
+            }
+        ]
+
 
 def generate_metadata(
     episode_id: str,
@@ -19,32 +121,38 @@ def generate_metadata(
     output_dir: str,
     privacy_status: str = "unlisted"
 ) -> Dict[str, Any]:
-    """Generates the comprehensive metadata JSON for the episode."""
+    """Generates comprehensive metadata JSON and A/B Test & Compare packaging."""
     os.makedirs(output_dir, exist_ok=True)
 
-    # 1. High-CTR, policy-compliant title
-    # Pattern: [Era/Event] — [Stakes / Phenomenon]
-    title = f"{era}: {working_title}"
+    # 1. Generate A/B Titles
+    ab_titles = generate_ab_titles(era, pillar, working_title)
+    primary_title = ab_titles[0]["title"]
 
-    # 2. Description with Hook, Sourced Fact Citations, and Chapters
-    # 2. Description with Hook, Sourced Fact Citations, Chapters, and Viral Hashtags
+    # 2. 3 Alternate Description Hooks (Above-the-fold teasers)
+    description_hooks = [
+        f"{hook}. Discover the untold scientific story of how our planet survived its most violent dawn.",
+        "Everything we know about continents and oceans was forged in an ancient inferno. Here is the forensic evidence.",
+        "Look at the ground beneath your feet. Four billion years ago, it did not exist. Here is what happened."
+    ]
+
+    # 3. Viral and High-RPM Hashtags (Attracts premium science/educational advertiser bids)
     viral_hashtags = [
         "#EarthHistory",
+        "#PlanetaryScience",
         "#PlateTectonics",
-        "#Geology",
-        "#ScienceDocumentary",
+        "#GeologyDocumentary",
+        "#DeepTime",
+        "#SpaceDocumentary",
+        "#Astrobiology",
         "#Pangaea",
         "#Hadean",
-        "#AncientEarth",
-        "#DeepTime",
-        "#Science",
-        "#SpaceDocumentary",
-        "#HistoryOfEarth"
+        "#Science"
     ]
     hashtag_str = " ".join(viral_hashtags)
 
+    # 4. Description Body
     description_lines = [
-        f"{hook}.",
+        description_hooks[0],
         "",
         "Before continents wandered the globe, Earth was trapped in a single, unbroken rocky shell capping a boiling mantle. "
         "Discover the forensic scientific detective story of how the primordial 'stagnant lid' was shattered, "
@@ -56,12 +164,12 @@ def generate_metadata(
     ]
 
     for idx, claim in enumerate(approved_claims, 1):
-        source = claim.get("source_url", "Scientific Consensus")
+        source = claim.get("source_url") or claim.get("citation", "Peer-Reviewed Consensus")
         description_lines.append(f"• Fact {idx}: {claim['text']}")
         description_lines.append(f"  Source: {source}")
 
     description_lines.append("")
-    description_lines.append("--- CHAPTERS ---")
+    description_lines.append("--- TIMESTAMPS & CHAPTERS ---")
     chapters = []
     for shot in shot_list:
         ts = shot.get("timestamp_start", "00:00")
@@ -75,8 +183,32 @@ def generate_metadata(
 
     description = "\n".join(description_lines)
 
-    # 3. Comprehensive High-Ranking Search Tags (maximum discoverability, strictly general-audience compliant)
-    if pillar.lower() == "map":
+    # 5. High-RPM & Search Discoverability Tags
+    norm_pillar = pillar.strip().lower()
+    if "air" in norm_pillar or "ocean" in norm_pillar:
+        tags = [
+            "first ocean on earth",
+            "how did earth get water",
+            "hadean atmosphere",
+            "faint young sun paradox",
+            "primordial ocean earth",
+            "emerald green ocean",
+            "supercritical steam atmosphere",
+            "thousand year rain",
+            "jack hills zircon water",
+            "earth history documentary",
+            "deep time geology",
+            "planetary science documentary",
+            "atmospheric evolution",
+            "geophysics documentary",
+            "astrobiology origin of life",
+            "hydrothermal vents",
+            "origin of earth ocean",
+            "ancient earth documentary",
+            "space documentary",
+            "history of earth"
+        ]
+    elif norm_pillar == "map":
         tags = [
             "plate tectonics",
             "how plate tectonics started",
@@ -88,14 +220,14 @@ def generate_metadata(
             "jack hills zircon",
             "oldest rock on earth",
             "first subduction zone",
-            "primordial earth animation",
+            "planetary science",
+            "geophysics documentary",
+            "astrobiology earth origins",
             "geology documentary",
-            "earth science",
-            "deep time",
+            "deep time science",
             "formation of continents",
             "craton formation",
             "pilbara craton",
-            "ancient earth 4 billion years ago",
             "history of earth",
             "space documentary"
         ]
@@ -116,10 +248,10 @@ def generate_metadata(
 
     metadata = {
         "episode_id": episode_id,
-        "title": title,
+        "title": primary_title,
         "description": description,
         "tags": tags,
-        "category_id": "27",  # 27 = Education
+        "category_id": "27",  # Education
         "privacy_status": privacy_status,
         "playlist_ids": [],
         "captions": [
@@ -132,9 +264,34 @@ def generate_metadata(
         "chapters": chapters
     }
 
+    # Save primary metadata.json
     out_file = os.path.join(output_dir, "metadata.json")
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
+
+    # Save A/B Packaging Matrix for YouTube Studio Test & Compare
+    ab_package = {
+        "episode_id": episode_id,
+        "testing_tool": "YouTube Studio Test & Compare (Free Native A/B Testing)",
+        "title_variants": ab_titles,
+        "description_hook_variants": [
+            {"variant": "A", "hook": description_hooks[0]},
+            {"variant": "B", "hook": description_hooks[1]},
+            {"variant": "C", "hook": description_hooks[2]}
+        ],
+        "thumbnail_variants": [
+            {"variant": "A", "path": f"output/{episode_id}/{episode_id}_thumb_candidate_a.png", "focus": "Stagnant Lid / Impossible Shell"},
+            {"variant": "B", "path": f"output/{episode_id}/{episode_id}_thumb_candidate_b.png", "focus": "The First Crack / Subduction Rupture"},
+            {"variant": "C", "path": f"output/{episode_id}/{episode_id}_thumb_candidate_c.png", "focus": "Zircon Atomic Witness"}
+        ],
+        "target_audience": "General Audience (Ages 16-65, Science & Documentary Lovers)",
+        "coppa_status": "Strictly Not Made for Kids (Compliant)",
+        "projected_rpm_tier": "High ($8-$18 RPM via Planetary Science & Space targeting)"
+    }
+
+    ab_file = os.path.join(output_dir, "ab_packaging.json")
+    with open(ab_file, "w", encoding="utf-8") as f:
+        json.dump(ab_package, f, indent=2)
 
     return metadata
 
@@ -142,14 +299,14 @@ def generate_metadata(
 if __name__ == "__main__":
     out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "test_seo")
     m = generate_metadata(
-        episode_id="hadean_landscape_01",
+        episode_id="hadean_map_02",
         era="Hadean",
-        pillar="Landscape",
-        working_title="A World of Fire and Rain",
-        hook="Earth had no solid ground for 500 million years",
-        approved_claims=[{"text": "Earth formed ~4.54 Ga.", "source_url": "https://en.wikipedia.org/wiki/Hadean"}],
-        shot_list=[{"timestamp_start": "00:00", "segment_type": "cold_open"}],
+        pillar="Map",
+        working_title="The Planet With No Plates",
+        hook="Before continents, there was one churning shell",
+        approved_claims=[{"text": "The infant Earth was locked in a stagnant lid.", "source_url": "https://en.wikipedia.org/wiki/Stagnant_lid"}],
+        shot_list=[{"timestamp_start": "00:00", "scene_title": "The Unbroken Prison"}],
         output_dir=out
     )
-    print("Generated Metadata Title:", m["title"])
-    print("Saved to:", os.path.join(out, "metadata.json"))
+    print("Generated Primary Title:", m["title"])
+    print("Saved metadata.json and ab_packaging.json to:", out)

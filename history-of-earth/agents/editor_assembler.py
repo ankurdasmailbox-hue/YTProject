@@ -52,6 +52,26 @@ CAMERA_PROFILES = {
         "vfx": ",eq=contrast=1.08:saturation=1.10",
         "description": "Abyssal descent tracking down volcanic black smoker chimney into the deep sea"
     },
+    "supercritical_steam_vault": {
+        "filter": "zoompan=z='min(zoom+0.0010,1.22)':x='iw/2-(iw/zoom/2)':y='min(ih-ih/zoom, on*0.4)'",
+        "vfx": ",eq=contrast=1.12:saturation=1.10",
+        "description": "Slow crushing downward tilt into the supercritical atmospheric steam vault"
+    },
+    "faint_young_sun_haze": {
+        "filter": "zoompan=z='min(zoom+0.0008,1.20)':x='(iw/2-(iw/zoom/2))+sin(on*0.5)*2':y='ih*0.35-(ih/zoom/2)'",
+        "vfx": ",eq=contrast=1.08:saturation=1.15",
+        "description": "Atmospheric telemetry scan tracking the faint young Sun through thick greenhouse smog"
+    },
+    "atmospheric_condensation_shatter": {
+        "filter": "zoompan=z='min(zoom+0.0012,1.25)':x='iw/2-(iw/zoom/2)':y='ih*0.45-(ih/zoom/2)'",
+        "vfx": ",eq=brightness='if(between(mod(n,60),0,2),0.45,if(between(mod(n,120),0,3),0.70,0))':contrast=1.10",
+        "description": "Atmospheric condensation shatter with dynamic procedural lightning flashes"
+    },
+    "emerald_ocean_iron": {
+        "filter": "zoompan=z='1.15':x='min(iw-iw/zoom, on*0.5)':y='ih*0.52-(ih/zoom/2)'",
+        "vfx": ",eq=contrast=1.10:saturation=1.20",
+        "description": "Panoramic horizontal ocean sweep across rolling emerald-green iron waves"
+    },
     "life_spark_cliffhanger": {
         "filter": "zoompan=z='min(zoom+0.0012,1.26)':x='iw*0.52-(iw/zoom/2)':y='ih*0.48-(ih/zoom/2)'",
         "vfx": ",eq=contrast=1.12:saturation=1.15",
@@ -378,13 +398,15 @@ def render_cinematic_act(
 def assemble_full_movie(
     act_clips: List[str],
     ambient_music_path: str,
-    srt_path: str,
-    output_mp4_path: str,
-    sfx_paths: Optional[Dict[str, str]] = None
+    srt_path: Optional[str] = None,
+    output_mp4_path: str = "",
+    sfx_paths: Optional[Dict[str, str]] = None,
+    burn_subtitles: bool = True
 ) -> Dict[str, Any]:
     """
     Concatenates all cinematic acts, blends multi-layered sound design,
-    and burns in non-intrusive 2-line subtitles in the lower-third.
+    and optionally burns in subtitles. When burn_subtitles=False, produces
+    pristine clean cinematic footage with zero text overlay.
     """
     work_dir = os.path.dirname(os.path.abspath(output_mp4_path))
     os.makedirs(work_dir, exist_ok=True)
@@ -407,25 +429,44 @@ def assemble_full_movie(
     ]
     subprocess.run(concat_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
 
-    # 2. Final Audio Mixing & Subtitle Burn-In (strictly 2 lines, lower third)
-    srt_rel = os.path.basename(srt_path)
-    
-    # Sound design audio mixing: narration [0:a] + ambient drone [1:a]
-    final_cmd = [
-        FFMPEG_EXE, "-y",
-        "-i", unsubbed_video,
-        "-i", ambient_music_path.replace("\\", "/"),
-        "-filter_complex",
-        f"[1:a]volume=0.18[bg_music];[0:a][bg_music]amix=inputs=2:duration=first[aout];[0:v]subtitles={srt_rel}:force_style='FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,MarginV=28,Alignment=2'[vout]",
-        "-map", "[vout]",
-        "-map", "[aout]",
-        "-c:v", "libx264",
-        "-preset", "faster",
-        "-crf", "19",
-        "-c:a", "aac",
-        "-b:a", "192k",
-        output_mp4_path
-    ]
+    # 2. Final Audio Mixing & Optional Subtitle Burn-In
+    if burn_subtitles and srt_path and os.path.exists(srt_path):
+        srt_rel = os.path.basename(srt_path)
+        filter_complex = (
+            f"[1:a]volume=0.18[bg_music];"
+            f"[0:a][bg_music]amix=inputs=2:duration=first[aout];"
+            f"[0:v]subtitles={srt_rel}:force_style='FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,MarginV=28,Alignment=2'[vout]"
+        )
+        final_cmd = [
+            FFMPEG_EXE, "-y",
+            "-i", unsubbed_video,
+            "-i", ambient_music_path.replace("\\", "/"),
+            "-filter_complex", filter_complex,
+            "-map", "[vout]",
+            "-map", "[aout]",
+            "-c:v", "libx264",
+            "-preset", "faster",
+            "-crf", "19",
+            "-c:a", "aac",
+            "-b:a", "192k",
+            output_mp4_path
+        ]
+    else:
+        # Clean cinematic output (No subtitles burned in)
+        filter_complex = "[1:a]volume=0.18[bg_music];[0:a][bg_music]amix=inputs=2:duration=first[aout]"
+        final_cmd = [
+            FFMPEG_EXE, "-y",
+            "-i", unsubbed_video,
+            "-i", ambient_music_path.replace("\\", "/"),
+            "-filter_complex", filter_complex,
+            "-map", "0:v",
+            "-map", "[aout]",
+            "-c:v", "copy",
+            "-c:a", "aac",
+            "-b:a", "192k",
+            "-shortest",
+            output_mp4_path
+        ]
 
     start_time = time.time()
     subprocess.run(final_cmd, cwd=work_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)

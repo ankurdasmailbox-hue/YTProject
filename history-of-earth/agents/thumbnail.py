@@ -1,7 +1,11 @@
 """
-Thumbnail Agent for History of Earth.
-Generates high-CTR thumbnail candidates adhering to style_bible.json,
-featuring bold subject silhouettes, high-contrast palette, and era badge.
+Thumbnail Agent for History of Earth (Upgraded High-CTR A/B Engine).
+Adopts YouTube CTR engineering principles:
+1. "Obsess Over CTR": Produces 3 tested thumbnail variants with distinct focal angles.
+2. Bold, high-contrast typography (2-4 words max, large impact font with drop shadow & stroke).
+3. Dramatic curiosity gaps & focal contrast.
+4. Top-left era badge for brand recognizability across playlists.
+100% Zero-Subscription, Local Python / Pillow.
 """
 
 import os
@@ -9,88 +13,282 @@ from typing import Dict, List, Any
 from PIL import Image, ImageDraw, ImageFont
 
 DEFAULT_PALETTE = {
-    "magma": (211, 47, 47),
-    "molten": (255, 87, 34),
-    "basalt": (20, 20, 20),
-    "sky": (50, 20, 15),
+    "magma": (220, 38, 38),
+    "molten": (249, 115, 22),
+    "basalt": (15, 23, 42),
+    "deep_space": (10, 15, 30),
+    "sky_hell": (45, 15, 10),
     "white": (255, 255, 255),
+    "yellow_glow": (250, 204, 21),
     "badge_bg": (2, 132, 199)
 }
+
+FONT_IMPACT = "C:/Windows/Fonts/impact.ttf"
+FONT_ARIAL_BOLD = "C:/Windows/Fonts/arialbd.ttf"
+
+
+def get_fonts(main_size: int = 76, sub_size: int = 38, badge_size: int = 24):
+    """Loads high-impact bold fonts with graceful fallback."""
+    try:
+        if os.path.exists(FONT_IMPACT):
+            font_main = ImageFont.truetype(FONT_IMPACT, main_size)
+        elif os.path.exists(FONT_ARIAL_BOLD):
+            font_main = ImageFont.truetype(FONT_ARIAL_BOLD, main_size)
+        else:
+            font_main = ImageFont.load_default()
+    except Exception:
+        font_main = ImageFont.load_default()
+
+    try:
+        if os.path.exists(FONT_ARIAL_BOLD):
+            font_sub = ImageFont.truetype(FONT_ARIAL_BOLD, sub_size)
+            font_badge = ImageFont.truetype(FONT_ARIAL_BOLD, badge_size)
+        else:
+            font_sub = ImageFont.load_default()
+            font_badge = ImageFont.load_default()
+    except Exception:
+        font_sub = ImageFont.load_default()
+        font_badge = ImageFont.load_default()
+
+    return font_main, font_sub, font_badge
+
+
+def draw_text_with_outline(
+    draw: ImageDraw.ImageDraw,
+    pos: tuple[int, int],
+    text: str,
+    font: ImageFont.ImageFont,
+    fill_color: tuple[int, int, int] = (255, 255, 255),
+    outline_color: tuple[int, int, int] = (0, 0, 0),
+    outline_width: int = 5,
+    drop_shadow: bool = True
+):
+    """Draws punchy YouTube thumbnail text with heavy outline and drop shadow."""
+    x, y = pos
+    if drop_shadow:
+        # Drop shadow
+        draw.text((x + 6, y + 6), text, font=font, fill=(0, 0, 0, 200))
+    # Outline & Main Text
+    draw.text(
+        (x, y),
+        text,
+        font=font,
+        fill=fill_color,
+        stroke_width=outline_width,
+        stroke_fill=outline_color
+    )
 
 
 def generate_thumbnails(
     episode_id: str,
     output_dir: str,
     era: str = "HADEAN",
-    title_text: str = "NO PLATES",
+    title_text: str = "NO PLATES?",
     pillar: str = "Map",
     width: int = 1280,
     height: int = 720
 ) -> List[str]:
-    """Generates 3 thumbnail candidates with varying compositional focal points."""
+    """
+    Generates 3 distinct high-CTR thumbnail candidates with varying psychological focal points:
+    - Candidate A: The Curiosity Paradox (e.g. 'NO PLATES?')
+    - Candidate B: The Catastrophic Rupture (e.g. 'EARTH BROKE')
+    - Candidate C: The Forensic Atomic Witness (e.g. '4.4B PROOF')
+    """
     os.makedirs(output_dir, exist_ok=True)
     generated_paths = []
+    font_main, font_sub, font_badge = get_fonts(main_size=78, sub_size=36, badge_size=24)
 
-    if pillar.lower() == "map":
+    norm_pillar = pillar.strip().lower()
+    if "air" in norm_pillar or "ocean" in norm_pillar:
         candidates = [
-            {"suffix": "candidate_a", "focal": "stagnant_lid", "subtext": "500M YEAR SHELL"},
-            {"suffix": "candidate_b", "focal": "the_first_crack", "subtext": "SUBDUCTION AWAKENS"},
-            {"suffix": "candidate_c", "focal": "zircon_crystal", "subtext": "ATOMIC WITNESS"}
+            {
+                "suffix": "candidate_a",
+                "focal": "emerald_sea",
+                "curiosity_title": "GREEN SEA?",
+                "subtext": "BOILING IRON WATERS",
+                "sub_color": (74, 222, 128)  # Bright emerald green
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "steam_vault",
+                "curiosity_title": "POISON SKY",
+                "subtext": "200 ATM PRESSURE",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "thousand_year_rain",
+                "curiosity_title": "1,000 YR RAIN",
+                "subtext": "THE SKY COLLAPSED",
+                "sub_color": (56, 189, 248)  # Cyan
+            }
+        ]
+    elif norm_pillar == "map":
+        candidates = [
+            {
+                "suffix": "candidate_a",
+                "focal": "stagnant_lid",
+                "curiosity_title": "NO PLATES?",
+                "subtext": "500-MILLION YEAR PRISON",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "the_first_crack",
+                "curiosity_title": "EARTH BROKE",
+                "subtext": "THE FIRST SUBDUCTION",
+                "sub_color": DEFAULT_PALETTE["molten"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "zircon_crystal",
+                "curiosity_title": "4.4B PROOF",
+                "subtext": "SCIENCE WAS WRONG",
+                "sub_color": (56, 189, 248)  # Cyan
+            }
         ]
     else:
         candidates = [
-            {"suffix": "candidate_a", "focal": "magma_ocean", "subtext": "NO SOLID GROUND"},
-            {"suffix": "candidate_b", "focal": "theia_impact", "subtext": "THE 4.5B DAWN"},
-            {"suffix": "candidate_c", "focal": "zircon_crystal", "subtext": "FIRST WITNESS"}
+            {
+                "suffix": "candidate_a",
+                "focal": "theia_impact",
+                "curiosity_title": "PLANET SMASH",
+                "subtext": "25,000 MPH COLLISION",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "magma_ocean",
+                "curiosity_title": "NO GROUND",
+                "subtext": "1,000 KM DEEP LAVA",
+                "sub_color": DEFAULT_PALETTE["molten"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "zircon_crystal",
+                "curiosity_title": "THE FIRST SEA",
+                "subtext": "BEFORE WE EXISTED",
+                "sub_color": (56, 189, 248)
+            }
         ]
 
     for cand in candidates:
-        img = Image.new("RGB", (width, height), color=DEFAULT_PALETTE["sky"])
+        img = Image.new("RGB", (width, height), color=DEFAULT_PALETTE["sky_hell"])
         draw = ImageDraw.Draw(img)
 
-        # Background gradient
+        # 1. Atmospheric Gradient
         for y in range(height):
             ratio = y / height
-            r = int(50 + 160 * ratio)
-            g = int(20 + 40 * ratio)
-            b = int(15 + 10 * ratio)
+            r = int(25 + 175 * ratio)
+            g = int(10 + 45 * ratio)
+            b = int(12 + 15 * ratio)
             draw.line([(0, y), (width, y)], fill=(r, g, b))
 
-        # Distinct graphic illustration based on focal point
-        if cand["focal"] == "theia_impact":
-            # Giant impacting sphere
-            draw.ellipse([width - 500, -100, width + 100, 500], fill=(255, 120, 30))
-            draw.ellipse([width - 450, -50, width + 50, 450], fill=(255, 200, 80))
+        # 2. Hero Visual Focal Subject
+        if cand["focal"] == "emerald_sea":
+            # Boiling emerald-green iron waves and dark sulfur horizon
+            cx, cy = width - 360, 360
+            # Glowing toxic sea disc/horizon
+            draw.polygon([(width - 650, 220), (width, 220), (width, height), (width - 650, height)], fill=(16, 85, 55))
+            for wave_y in range(240, height, 40):
+                draw.line([(width - 650, wave_y), (width, wave_y)], fill=(34, 197, 94), width=4)
+                draw.line([(width - 600, wave_y + 10), (width, wave_y + 10)], fill=(74, 222, 128), width=2)
+            # Ambient sulfur lightning above waves
+            draw.line([(cx, 80), (cx - 40, 180), (cx + 20, 260)], fill=(255, 230, 100), width=6)
+
+        elif cand["focal"] == "steam_vault":
+            # Supercritical steam vortex & pressure rings
+            cx, cy = width - 360, 300
+            for radius, col in [(280, (140, 80, 25)), (220, (180, 110, 35)), (160, (220, 150, 50)), (100, (255, 210, 90))]:
+                draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline=col, width=8)
+            # Pressure core
+            draw.ellipse([cx - 50, cy - 50, cx + 50, cy + 50], fill=(255, 120, 30))
+
+        elif cand["focal"] == "thousand_year_rain":
+            # Catastrophic lightning & rain deluges
+            cx = width - 360
+            # Dark storm clouds
+            draw.ellipse([cx - 260, 0, cx + 260, 320], fill=(30, 40, 55))
+            # Lightning bolts
+            draw.line([(cx - 80, 120), (cx - 20, 280), (cx - 100, 450), (cx - 50, height)], fill=(255, 255, 255), width=5)
+            draw.line([(cx - 80, 120), (cx - 20, 280), (cx - 100, 450), (cx - 50, height)], fill=(56, 189, 248), width=12)
+            # Torrential streaks
+            for rx in range(width - 550, width, 25):
+                draw.line([(rx, 220), (rx - 30, 550)], fill=(120, 190, 255), width=3)
+            # Giant incandescent impact body & shockwave rings
+            cx, cy = width - 360, 260
+            for radius, col in [(320, (180, 50, 20)), (260, (230, 90, 30)), (200, (255, 160, 40)), (140, (255, 230, 100))]:
+                draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], fill=col)
+            # Ejecta rays
+            for angle_offset in range(-60, 70, 20):
+                draw.line([(cx - 100, cy), (cx - 480, cy + angle_offset * 4)], fill=(255, 220, 100), width=6)
+
         elif cand["focal"] == "stagnant_lid":
-            # Solid sphere with glowing grid
-            draw.ellipse([width - 520, 50, width - 40, 530], fill=(30, 35, 45), outline=(0, 200, 255), width=4)
-            for g_i in range(1, 4):
-                draw.arc([width - 520, 50, width - 40, 530], start=30 * g_i, end=30 * g_i + 45, fill=(255, 120, 40), width=3)
+            # Planetary sphere locked in glowing tectonic grid
+            cx, cy = width - 360, 300
+            draw.ellipse([cx - 240, cy - 240, cx + 240, cy + 240], fill=(20, 25, 35), outline=(0, 220, 255), width=6)
+            for g_i in range(1, 5):
+                draw.arc([cx - 240, cy - 240, cx + 240, cy + 240], start=35 * g_i, end=35 * g_i + 50, fill=(255, 100, 30), width=5)
+            # Center lock symbol / thermal glow
+            draw.ellipse([cx - 80, cy - 80, cx + 80, cy + 80], fill=(255, 120, 30))
+
         elif cand["focal"] == "the_first_crack":
-            # Fracturing plate with glowing seam
-            draw.polygon([(width - 480, 100), (width, 100), (width, 500), (width - 480, 500)], fill=(40, 45, 55))
-            draw.line([(width - 400, 100), (width - 240, 300), (width - 320, 500)], fill=(255, 255, 200), width=6)
-            draw.line([(width - 400, 100), (width - 240, 300), (width - 320, 500)], fill=(255, 90, 30), width=12)
+            # Tectonic rupture split with molten abyss
+            draw.polygon([(width - 550, 0), (width, 0), (width, height), (width - 550, height)], fill=(25, 30, 40))
+            # Glowing jagged rupture fault
+            draw.line([(width - 450, 0), (width - 320, 300), (width - 380, height)], fill=(255, 80, 20), width=18)
+            draw.line([(width - 450, 0), (width - 320, 300), (width - 380, height)], fill=(255, 255, 180), width=6)
+
         elif cand["focal"] == "zircon_crystal":
+            # Luminescent geometric zircon crystal
+            cx, cy = width - 350, 320
+            # Ambient crystal aura
+            draw.ellipse([cx - 200, cy - 200, cx + 200, cy + 200], fill=(30, 70, 110))
             # Faceted mineral silhouette
-            draw.polygon([(width//2 - 80, 200), (width//2 + 80, 200), (width//2 + 160, 400), (width//2, 550), (width//2 - 160, 400)], fill=(255, 215, 0))
+            pts = [
+                (cx, cy - 220), (cx + 140, cy - 70), (cx + 140, cy + 120),
+                (cx, cy + 220), (cx - 140, cy + 120), (cx - 140, cy - 70)
+            ]
+            draw.polygon(pts, fill=(56, 189, 248), outline=(255, 255, 255), width=4)
+            # Internal atomic lattice glow
+            draw.line([(cx, cy - 220), (cx, cy + 220)], fill=(255, 255, 255), width=3)
+            draw.line([(cx - 140, cy - 70), (cx + 140, cy + 120)], fill=(255, 255, 255), width=2)
+            draw.line([(cx - 140, cy + 120), (cx + 140, cy - 70)], fill=(255, 255, 255), width=2)
+
         else:
-            # Magma lake silhouette
-            draw.polygon([(0, 450), (width//2, 380), (width, 500), (width, height), (0, height)], fill=(220, 60, 20))
+            # Magma lake
+            draw.polygon([(0, 460), (width//2, 390), (width, 480), (width, height), (0, height)], fill=(225, 45, 15))
 
-        # Basalt foreground framing
-        draw.polygon([(0, 350), (350, 500), (250, height), (0, height)], fill=DEFAULT_PALETTE["basalt"])
-        draw.polygon([(width - 300, 400), (width, 550), (width, height), (width - 400, height)], fill=DEFAULT_PALETTE["basalt"])
+        # 3. Basalt Foreground Framing (Cinematic Depth)
+        draw.polygon([(0, 380), (400, 560), (280, height), (0, height)], fill=DEFAULT_PALETTE["basalt"])
+        draw.polygon([(width - 320, 480), (width, 580), (width, height), (width - 420, height)], fill=DEFAULT_PALETTE["basalt"])
 
-        # Top-left Era Badge
-        draw.rounded_rectangle([40, 40, 220, 95], radius=8, fill=DEFAULT_PALETTE["badge_bg"])
-        draw.text((60, 52), f"ERA: {era}", fill=(255, 255, 255))
+        # 4. Top-Left Era Badge (Brand & Playlist recognition)
+        badge_w, badge_h = 240, 56
+        draw.rounded_rectangle([45, 45, 45 + badge_w, 45 + badge_h], radius=10, fill=DEFAULT_PALETTE["badge_bg"], outline=(255, 255, 255), width=2)
+        draw_text_with_outline(
+            draw, (70, 56), f"ERA: {era}", font=font_badge,
+            fill_color=(255, 255, 255), outline_width=2, drop_shadow=False
+        )
 
-        # Bold Title & Subtext
-        # Fallback to default font if custom font not found
-        draw.text((50, 520), title_text, fill=(255, 255, 255))
-        draw.text((50, 570), cand["subtext"], fill=(255, 220, 50))
+        # 5. Bold Curiosity Title & Subtext
+        curiosity_txt = cand["curiosity_title"]
+        sub_txt = cand["subtext"]
+        sub_col = cand["sub_color"]
 
+        # Main Curiosity Title (Huge 78pt Impact Font)
+        draw_text_with_outline(
+            draw, (55, 485), curiosity_txt, font=font_main,
+            fill_color=DEFAULT_PALETTE["white"], outline_width=6, drop_shadow=True
+        )
+
+        # Subtext / Stakes (36pt Arial Bold)
+        draw_text_with_outline(
+            draw, (58, 585), sub_txt, font=font_sub,
+            fill_color=sub_col, outline_width=4, drop_shadow=True
+        )
+
+        # Save candidate
         file_path = os.path.join(output_dir, f"{episode_id}_thumb_{cand['suffix']}.png")
         img.save(file_path, "PNG")
         generated_paths.append(file_path)
@@ -99,8 +297,8 @@ def generate_thumbnails(
 
 
 if __name__ == "__main__":
-    out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "test_thumbnails")
-    thumbs = generate_thumbnails("hadean_landscape_01", out)
-    print(f"Generated {len(thumbs)} thumbnails:")
+    out = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "test_thumbnails_v2")
+    thumbs = generate_thumbnails("hadean_map_02", out, era="HADEAN", pillar="Map")
+    print(f"Generated {len(thumbs)} High-CTR Thumbnails in {out}:")
     for t in thumbs:
-        print(" ", t)
+        print(" ->", t)

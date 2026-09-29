@@ -218,6 +218,123 @@ CINEMATIC_SCENES_HADEAN_MAP = [
 ]
 
 
+CINEMATIC_SCENES_HADEAN_AIR_OCEAN = [
+    {
+        "scene_id": 1,
+        "title": "THE PRESSURE VAULT",
+        "scene_type": "supercritical_steam_vault",
+        "scene_asset": "assets/scenes/supercritical_steam_vault.jpg",
+        "camera_style": "downward_pressure_push_with_haze",
+        "mood": "internal_furnace",
+        "narration": (
+            "Take a breath. Feel the cool, clean air filling your lungs.\n\n"
+            "Four point four billion years ago, a single breath would have dissolved your lungs and crushed your body with the force of an industrial hydraulic press.\n\n"
+            "In the aftermath of the planetary magma ocean, infant Earth was sealed inside an impenetrable atmospheric vault. "
+            "One hundred to two hundred atmospheres of supercritical steam, dense carbon dioxide, and choking sulfur gas pulverized the black basalt below.\n\n"
+            "The sky was not blue. It was an ominous, suffocating amber vault of acid, pressure, and perpetual darkness.\n\n"
+            "How could a liquid ocean ever form inside this planetary pressure furnace?"
+        )
+    },
+    {
+        "scene_id": 2,
+        "title": "THE FAINT YOUNG SUN PARADOX",
+        "scene_type": "faint_young_sun_haze",
+        "scene_asset": "assets/scenes/faint_young_sun_haze.jpg",
+        "camera_style": "solar_haze_telemetry_scan",
+        "mood": "cosmic_mystery",
+        "narration": (
+            "Peer through this toxic sulfur veil into deep space, and astrophysics reveals an impossible paradox.\n\n"
+            "Four billion years ago, our newborn Sun was weak—burning twenty-five to thirty percent fainter than it does today.\n\n"
+            "By all laws of stellar physics, infant Earth should have frozen solid into a lifeless, dead snowball of cosmic ice.\n\n"
+            "So why did the world stay liquid?\n\n"
+            "Because the poisonous sky was a colossal greenhouse trap. "
+            "Gigatons of volcanic carbon dioxide and methane formed an impenetrable thermal blanket, capturing every single watt of internal heat.\n\n"
+            "Earth did not freeze. It simmered at the boiling edge of planetary physics."
+        )
+    },
+    {
+        "scene_id": 3,
+        "title": "THE THERMAL TIPPING POINT",
+        "scene_type": "atmospheric_condensation_shatter",
+        "scene_asset": "assets/scenes/atmospheric_condensation_shatter.jpg",
+        "camera_style": "vertical_deluge_lightning_tilt",
+        "mood": "tectonic_rupture",
+        "narration": (
+            "For tens of millions of years, the inferno refused to surrender.\n\n"
+            "Water could not condense. The basalt ground was too scorching, and the atmospheric steam was trapped in a supercritical vapor shroud.\n\n"
+            "Then... planetary thermodynamics crossed an irreversible tipping point.\n\n"
+            "As primordial radioactive decay slowed, surface temperatures dropped below three hundred and fifty degrees Celsius.\n\n"
+            "In a geological heartbeat, the physics of water flipped.\n\n"
+            "High within the cooling sulfur clouds... the sky broke."
+        )
+    },
+    {
+        "scene_id": 4,
+        "title": "THE THOUSAND-YEAR DELUGE",
+        "scene_type": "torrential_rain",
+        "scene_asset": "assets/scenes/torrential_rain.jpg",
+        "camera_style": "horizontal_storm_tracking_sweep",
+        "mood": "tectonic_rupture",
+        "narration": (
+            "What followed has never occurred again in the history of the solar system.\n\n"
+            "Rain began to fall.\n\n"
+            "Not gentle showers, but catastrophic, boiling, acidic downpours crashing day and night, century after century, without stopping for a single second.\n\n"
+            "A thousand years of unbroken deluge slamming into glowing basalt rock.\n\n"
+            "Explosive steam plumes erupted miles into the sky as superheated water boiled, condensed, and fell again.\n\n"
+            "An entire planetary atmosphere of steam was collapsing onto the crust of the Earth."
+        )
+    },
+    {
+        "scene_id": 5,
+        "title": "THE EMERALD SEA",
+        "scene_type": "emerald_ocean_iron",
+        "scene_asset": "assets/scenes/emerald_ocean_iron.jpg",
+        "camera_style": "panoramic_green_ocean_sweep",
+        "mood": "continental_majesty",
+        "narration": (
+            "When the centuries of scalding rain finally gathered in the lowlands, they pooled into Earth’s very first global ocean.\n\n"
+            "It bore zero resemblance to the blue waters we know.\n\n"
+            "Under an overcast orange sky, the primordial sea was scalding hot, corrosive, and heavily saturated with dissolved ferrous iron.\n\n"
+            "The ocean was an alien, murky emerald green.\n\n"
+            "No white sand beaches. No coral reefs. No fish.\n\n"
+            "Just hundreds of millions of square miles of boiling, iron-rich acid churning beneath continuous atmospheric lightning storms."
+        )
+    },
+    {
+        "scene_id": 6,
+        "title": "THE ATOMIC CHRONOMETER",
+        "scene_type": "jack_hills_zircon",
+        "scene_asset": "assets/scenes/jack_hills_zircon.jpg",
+        "camera_style": "macro_luminescence_dolly",
+        "mood": "atomic_discovery",
+        "narration": (
+            "For decades, science textbooks taught that this primordial ocean was a myth—that early Earth was a dry, desiccated wasteland until billions of years later.\n\n"
+            "Once again, the ancient rocks proved consensus wrong.\n\n"
+            "In the red dirt of Western Australia's Jack Hills, microscopic zircon crystals dated to four point four billion years ago preserved an undeniable atomic fingerprint:\n\n"
+            "Heavy oxygen-eighteen isotope ratios that could only be forged in the presence of cool, standing liquid water.\n\n"
+            "Within one hundred and fifty million years of planet formation, the impossible ocean was already here."
+        )
+    },
+    {
+        "scene_id": 7,
+        "title": "THE PREBIOTIC CRUCIBLE (CLIFFHANGER)",
+        "scene_type": "hydrothermal_vent",
+        "scene_asset": "assets/scenes/hydrothermal_vent.jpg",
+        "camera_style": "deep_abyssal_descent",
+        "mood": "cliffhanger_suspense",
+        "narration": (
+            "The sky was still toxic. The green ocean was boiling and acidic.\n\n"
+            "Yet four miles beneath the churning waves, where crushing pressure met volcanic heat, black smoker chimneys began spewing chemical riches into the total dark.\n\n"
+            "In these abyssal volcanic cauldrons, dead inorganic chemistry was about to cross the final threshold into code.\n\n"
+            "How did poisonous minerals spark the first self-replicating breath of life? "
+            "And what astronomical catastrophe almost snuffed it out before it could even begin?\n\n"
+            "Next time, on History of Earth: The Planet Before Life.\n\n"
+            "Subscribe, ring the bell, and journey with us... into the abyss."
+        )
+    }
+]
+
+
 def write_script(
     approved_claims: List[Dict[str, Any]],
     variation_constraints: Optional[Dict[str, Any]] = None,
@@ -227,7 +344,11 @@ def write_script(
     Assembles the 7-scene cinematic movie screenplay with high-retention pacing,
     theatrical acting cues, and the mysterious cliffhanger ending.
     """
-    if pillar.lower() == "map":
+    norm_pillar = pillar.strip().lower()
+    if "air" in norm_pillar or "ocean" in norm_pillar:
+        scenes = CINEMATIC_SCENES_HADEAN_AIR_OCEAN
+        next_hook = "The Planet Before Life"
+    elif norm_pillar == "map":
         scenes = CINEMATIC_SCENES_HADEAN_MAP
         next_hook = "The Sky Was Poison and the Rain Never Stopped"
     else:

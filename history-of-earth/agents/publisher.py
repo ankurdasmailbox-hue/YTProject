@@ -119,14 +119,22 @@ def get_authenticated_service(
         creds = Credentials.from_authorized_user_file(token_file, SCOPES)
 
     if not creds or not creds.valid:
+        refreshed = False
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
+            try:
+                creds.refresh(Request())
+                refreshed = True
+            except Exception as e:
+                print(f"  [OAuth] Stored token expired or revoked ({e}). Re-authorizing via browser...")
+
+        if not refreshed:
             if not os.path.exists(client_secrets_file):
                 raise FileNotFoundError(
                     f"OAuth client configuration '{client_secrets_file}' not found. "
                     f"Please download it from Google Cloud Console."
                 )
+            print("  [OAuth] Opening browser tab for one-time Google authorization. Please approve access to proceed...")
+            sys.stdout.flush()
             flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file, SCOPES)
             creds = flow.run_local_server(port=0)
 

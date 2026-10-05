@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Earth — Cloud Web Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            900: '#0c4a6e'
+                        },
+                        dark: {
+                            950: '#06090e',
+                            900: '#0b0f19',
+                            850: '#111827',
+                            800: '#151e32',
+                            700: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #06090e; color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+        .glass-panel { background: rgba(17, 24, 39, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.12); }
+        .mobile-frame {
+            width: 320px;
+            height: 568px;
+            border-radius: 36px;
+            border: 8px solid #1e293b;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.2);
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 antialiased selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-40 border-b border-slate-800 bg-dark-900/90 backdrop-blur-md">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+            <div class="flex items-center space-x-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 shadow-lg shadow-sky-500/20">
+                    <span class="text-xl">🌍</span>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <h1 class="text-lg font-bold tracking-tight text-white">HISTORY OF EARTH</h1>
+                        <span class="rounded-full bg-sky-950 px-2.5 py-0.5 text-xs font-semibold text-sky-400 border border-sky-800">WEB STUDIO</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Zero-Subscription Cloud Production &bull; Option 3 Hybrid</p>
+                </div>
+            </div>
+
+            <!-- Social Links & Architecture Mode Badge -->
+            <div class="flex items-center space-x-3 text-xs">
+                <div class="hidden md:flex items-center space-x-2 rounded-lg bg-dark-800 px-3 py-1.5 border border-slate-700">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-slate-300 font-medium">Local AMD Ryzen AI &bull; Cloudflare Tunnel</span>
+                </div>
+
+                <a href="https://www.facebook.com/1279963101878153" target="_blank" class="flex items-center space-x-1.5 rounded-lg bg-blue-900/40 px-2.5 py-1.5 text-blue-300 hover:bg-blue-800/50 border border-blue-700/50 transition">
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <span class="hidden sm:inline font-semibold">FB: Earth History Animated</span>
+                </a>
+
+                <a href="https://www.instagram.com/earthhistoryanimated/" target="_blank" class="flex items-center space-x-1.5 rounded-lg bg-pink-900/40 px-2.5 py-1.5 text-pink-300 hover:bg-pink-800/50 border border-pink-700/50 transition">
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span class="hidden sm:inline font-semibold">@earthhistoryanimated</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+
+        <!-- Stat Counter Metrics -->
+        <section class="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-6">
+            <div class="glass-panel rounded-xl p-4">
+                <span class="text-xs uppercase font-semibold text-slate-400">Total Catalog</span>
+                <div class="mt-1 flex items-baseline space-x-2">
+                    <span class="text-2xl font-bold text-white" id="stat-total">100</span>
+                    <span class="text-xs text-slate-400">Episodes</span>
+                </div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+                <span class="text-xs uppercase font-semibold text-emerald-400">Published</span>
+                <div class="mt-1 flex items-baseline space-x-2">
+                    <span class="text-2xl font-bold text-emerald-400" id="stat-published">5</span>
+                    <span class="text-xs text-emerald-500/80">Live on YouTube</span>
+                </div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+                <span class="text-xs uppercase font-semibold text-sky-400">Review Ready</span>
+                <div class="mt-1 flex items-baseline space-x-2">
+                    <span class="text-2xl font-bold text-sky-400" id="stat-review">5</span>
+                    <span class="text-xs text-sky-500/80">Gate B Ready</span>
+                </div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+                <span class="text-xs uppercase font-semibold text-indigo-400">Option 3 Render Speed</span>
+                <div class="mt-1 flex items-baseline space-x-2">
+                    <span class="text-2xl font-bold text-indigo-400">~1.5m</span>
+                    <span class="text-xs text-indigo-400/80">50-60 fps Ryzen</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Search Toolbar -->
+        <section class="glass-panel rounded-xl p-4 mb-6">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+                <!-- Search Box -->
+                <div class="relative w-full md:w-80">
+                    <input type="text" id="search-input" placeholder="Search episode title, pillar, era..." 
+                           class="w-full rounded-lg bg-dark-950 border border-slate-700 px-3.5 py-2 pl-9 text-sm text-slate-100 placeholder-slate-400 focus:border-sky-500 focus:outline-none">
+                    <svg class="absolute left-3 top-2.5 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+
+                <!-- Era Tabs -->
+                <div class="flex flex-wrap gap-1.5 text-xs font-medium" id="era-tabs">
+                    <button class="era-btn active rounded-lg px-3 py-1.5 bg-sky-600 text-white" data-era="all">All (100)</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="hadean">Hadean</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="archean">Archean</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="proterozoic">Proterozoic</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="paleozoic">Paleozoic</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="mesozoic">Mesozoic</button>
+                    <button class="era-btn rounded-lg px-3 py-1.5 bg-dark-800 text-slate-300 hover:bg-dark-700" data-era="cenozoic">Cenozoic</button>
+                </div>
+
+                <!-- Status Filter -->
+                <div class="flex items-center space-x-2 text-xs">
+                    <label class="text-slate-400 font-medium">Status:</label>
+                    <select id="status-filter" class="rounded-lg bg-dark-950 border border-slate-700 px-2.5 py-1.5 text-slate-200 text-xs focus:border-sky-500 focus:outline-none">
+                        <option value="all">All Statuses</option>
+                        <option value="published">Published</option>
+                        <option value="review_ready">Review Ready (Gate B)</option>
+                        <option value="ready_to_generate">Ready to Generate</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Episode Catalog Grid -->
+        <section id="episode-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Rendered dynamically by JavaScript -->
+            <div class="col-span-full py-16 text-center text-slate-400">Loading catalog from content_map.csv...</div>
+        </section>
+
+    </main>
+
+    <!-- Gate B Review Modal -->
+    <div id="review-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6">
+        <div class="mx-auto max-w-5xl rounded-2xl glass-panel p-6 shadow-2xl border border-sky-500/20">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span id="modal-ep-number" class="rounded bg-sky-900/60 px-2 py-0.5 text-xs font-bold text-sky-300 border border-sky-700">EPISODE #</span>
+                        <span id="modal-pillar-badge" class="rounded bg-purple-900/60 px-2 py-0.5 text-xs font-bold text-purple-300 border border-purple-700">PILLAR</span>
+                        <span id="modal-status-badge" class="rounded bg-emerald-900/60 px-2 py-0.5 text-xs font-bold text-emerald-300">PUBLISHED</span>
+                    </div>
+                    <h2 id="modal-title" class="text-xl font-bold text-white mt-1.5">Episode Title</h2>
+                    <p id="modal-hook" class="text-xs text-slate-400 mt-0.5">Episode Hook</p>
+                </div>
+                <button onclick="closeReviewModal()" class="rounded-lg p-1.5 text-slate-400 hover:bg-dark-800 hover:text-white transition">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Modal Tabs -->
+            <div class="flex border-b border-slate-800 mt-4 space-x-6 text-sm font-semibold">
+                <button onclick="switchTab('master-video')" id="tab-btn-master" class="border-b-2 border-sky-400 pb-3 text-sky-400">1080p Master Video</button>
+                <button onclick="switchTab('shorts')" id="tab-btn-shorts" class="border-b-2 border-transparent pb-3 text-slate-400 hover:text-slate-200">9:16 Vertical Shorts</button>
+                <button onclick="switchTab('thumbnails')" id="tab-btn-thumbs" class="border-b-2 border-transparent pb-3 text-slate-400 hover:text-slate-200">A/B Thumbnails</button>
+                <button onclick="switchTab('seo')" id="tab-btn-seo" class="border-b-2 border-transparent pb-3 text-slate-400 hover:text-slate-200">SEO &amp; Trending Hashtags</button>
+            </div>
+
+            <!-- Tab Content 1: Master Video -->
+            <div id="tab-master-video" class="tab-pane py-6">
+                <div class="rounded-xl overflow-hidden bg-black aspect-video relative shadow-2xl border border-slate-800">
+                    <video id="master-video-player" controls class="w-full h-full object-contain">
+                        <source src="" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
+                    <span>Clean Subtitle-Free Stream &bull; Soft captions enabled via SRT</span>
+                    <a id="srt-download-link" href="#" target="_blank" class="text-sky-400 hover:underline">Download en.srt &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: 9:16 Vertical Shorts -->
+            <div id="tab-shorts" class="tab-pane hidden py-6">
+                <div class="flex flex-col lg:flex-row gap-8 items-center justify-center">
+                    <!-- Mobile Phone Frame Mockup -->
+                    <div class="mobile-frame">
+                        <video id="shorts-video-player" controls autoplay loop muted class="w-full h-full object-cover">
+                            <source src="" type="video/mp4">
+                        </video>
+                    </div>
+                    <!-- Shorts Selector & Metadata -->
+                    <div class="flex-1 space-y-4 max-w-md">
+                        <h4 class="text-sm uppercase tracking-wider font-bold text-sky-400">Vertical Shorts Funnel</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Auto-converted from 16:9 cinematic master footage into viral 9:16 (1080x1920) with ambient blur fill, bold theatrical top banner, and bottom long-form conversion CTA.
+                        </p>
+                        <div id="shorts-selector-list" class="space-y-2">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Thumbnails -->
+            <div id="tab-thumbnails" class="tab-pane hidden py-6">
+                <p class="text-xs text-slate-400 mb-4">Click to select active thumbnail for publishing or YouTube Studio A/B Test &amp; Compare:</p>
+                <div id="thumbs-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Tab Content 4: SEO Metadata -->
+            <div id="tab-seo" class="tab-pane hidden py-6 space-y-4">
+                <div>
+                    <label class="text-xs uppercase font-semibold text-slate-400">Primary High-CTR Title</label>
+                    <input type="text" id="seo-title" class="mt-1 w-full rounded-lg bg-dark-950 border border-slate-700 p-2.5 text-sm text-slate-100 font-medium">
+                </div>
+                <div>
+                    <label class="text-xs uppercase font-semibold text-slate-400">Trending Hashtags (High-RPM Science/Space)</label>
+                    <div class="mt-1 flex flex-wrap gap-1.5" id="seo-hashtags-container">
+                        <!-- Hashtags populated -->
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs uppercase font-semibold text-slate-400">Description &amp; Verified Citations</label>
+                    <textarea id="seo-description" rows="5" class="mt-1 w-full rounded-lg bg-dark-950 border border-slate-700 p-2.5 text-xs text-slate-200 font-mono"></textarea>
+                </div>
+            </div>
+
+            <!-- 1-Click Multi-Platform Publishing Hub Footer -->
+            <div class="border-t border-slate-800 pt-5 mt-4">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+                    <div>
+                        <span class="text-xs uppercase tracking-wider font-bold text-slate-400">1-Click Publishing Hub:</span>
+                        <p class="text-xs text-slate-500">Zero subscriptions &bull; Official Data API &amp; Meta Graph API</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <button onclick="publishTo('all')" class="flex items-center space-x-1.5 rounded-lg bg-gradient-to-r from-emerald-600 via-sky-600 to-purple-600 hover:from-emerald-500 hover:to-purple-500 px-4 py-2 text-xs font-extrabold text-white shadow-lg shadow-sky-600/30 transition">
+                            <span>🚀 1-Click Publish All 3 (YT + FB + IG)</span>
+                        </button>
+                        <button onclick="publishTo('youtube')" class="flex items-center space-x-1.5 rounded-lg bg-red-600 hover:bg-red-500 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-red-600/30 transition">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            <span>YouTube</span>
+                        </button>
+                        <button onclick="publishTo('facebook')" class="flex items-center space-x-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-blue-600/30 transition">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            <span>Facebook</span>
+                        </button>
+                        <button onclick="publishTo('instagram')" class="flex items-center space-x-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-pink-600/30 transition">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            <span>IG Reels</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="publish-status-banner" class="hidden mt-3 p-3 rounded-lg text-xs font-mono"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Generation Terminal Modal -->
+    <div id="terminal-modal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-3xl rounded-2xl glass-panel p-6 shadow-2xl border border-sky-500/30">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                    </span>
+                    <h3 class="text-sm font-bold text-white tracking-wide" id="terminal-title">GENERATING EPISODE...</h3>
+                </div>
+                <button onclick="closeTerminalModal()" class="text-slate-400 hover:text-white">&times;</button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-dark-950 rounded-full h-1.5 mt-4 overflow-hidden">
+                <div class="bg-gradient-to-r from-sky-500 to-indigo-500 h-1.5 rounded-full animate-pulse" style="width: 75%"></div>
+            </div>
+            <!-- Log Console -->
+            <div id="terminal-logs" class="mt-4 h-80 rounded-xl bg-dark-950 p-4 font-mono text-xs text-sky-300 overflow-y-auto space-y-1 border border-slate-800">
+                <div>[00:00:00] Initializing autonomous production pipeline...</div>
+            </div>
+            <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
+                <span>Option 3: Fast AMD Ryzen AI local render stream</span>
+                <button onclick="closeTerminalModal()" class="rounded-lg bg-dark-800 px-4 py-2 text-slate-200 hover:bg-dark-700">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let allEpisodes = [];
+        let currentReviewId = null;
+        let logPollInterval = null;
+
+        // Fetch Catalog on load
+        async function fetchCatalog() {
+            try {
+                const res = await fetch('/api/episodes');
+                const data = await res.json();
+                allEpisodes = data.episodes;
+                renderCatalog(allEpisodes);
+                updateStats();
+            } catch (err) {
+                console.error("Failed to load catalog:", err);
+            }
+        }
+
+        function updateStats() {
+            const total = allEpisodes.length;
+            const published = allEpisodes.filter(e => e.status === 'published').length;
+            const review = allEpisodes.filter(e => e.status === 'review_ready').length;
+            document.getElementById('stat-total').innerText = total;
+            document.getElementById('stat-published').innerText = published;
+            document.getElementById('stat-review').innerText = review;
+        }
+
+        function renderCatalog(episodes) {
+            const grid = document.getElementById('episode-grid');
+            if (episodes.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400">No episodes match your search/filter criteria.</div>';
+                return;
+            }
+
+            grid.innerHTML = episodes.map(ep => {
+                let badgeClass = "bg-slate-800 text-slate-300 border-slate-700";
+                let statusLabel = "Ready to Generate";
+                let pulseDot = "";
+
+                if (ep.status === "published") {
+                    badgeClass = "bg-emerald-950/80 text-emerald-400 border-emerald-800/80";
+                    statusLabel = "Published";
+                } else if (ep.status === "review_ready") {
+                    badgeClass = "bg-sky-950/80 text-sky-400 border-sky-800/80";
+                    statusLabel = "Gate B Ready";
+                    pulseDot = '<span class="inline-block h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse mr-1"></span>';
+                } else if (ep.status === "rendering") {
+                    badgeClass = "bg-amber-950/80 text-amber-400 border-amber-800/80";
+                    statusLabel = "Rendering...";
+                    pulseDot = '<span class="inline-block h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping mr-1"></span>';
+                }
+
+                // Pillar badge color
+                let pillarClass = "bg-purple-950/60 text-purple-300 border-purple-800/60";
+                if (ep.pillar.includes("Landscape")) pillarClass = "bg-amber-950/60 text-amber-300 border-amber-800/60";
+                if (ep.pillar.includes("Air") || ep.pillar.includes("Ocean")) pillarClass = "bg-cyan-950/60 text-cyan-300 border-cyan-800/60";
+                if (ep.pillar.includes("Life")) pillarClass = "bg-emerald-950/60 text-emerald-300 border-emerald-800/60";
+                if (ep.pillar.includes("Leap")) pillarClass = "bg-rose-950/60 text-rose-300 border-rose-800/60";
+
+                return `
+                    <div class="glass-panel rounded-xl p-5 flex flex-col justify-between hover:border-sky-500/40 transition shadow-lg">
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="font-bold text-slate-400">#${ep.episode_number.toString().padStart(2, '0')} &bull; ${ep.era}</span>
+                                <span class="rounded px-2 py-0.5 text-[10px] font-bold border ${pillarClass}">${ep.pillar}</span>
+                            </div>
+                            <h3 class="font-bold text-slate-100 text-base leading-snug">${ep.working_title}</h3>
+                            <p class="text-xs text-slate-400 mt-2 line-clamp-2">${ep.hook}</p>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
+                            <span class="rounded-full px-2.5 py-1 text-[11px] font-semibold border flex items-center ${badgeClass}">
+                                ${pulseDot} ${statusLabel}
+                            </span>
+                            <div class="flex items-center space-x-2">
+                                ${ep.has_video || ep.status === 'published' ? `
+                                    <button onclick="openReviewModal('${ep.episode_id}')" class="rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition">
+                                        Review Gate B
+                                    </button>
+                                ` : `
+                                    <button onclick="generateEpisode('${ep.episode_id}')" class="rounded-lg bg-dark-800 hover:bg-dark-700 px-3 py-1.5 text-xs font-semibold text-slate-200 border border-slate-700 transition">
+                                        Generate
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Live Search & Filter Handlers
+        document.getElementById('search-input').addEventListener('input', applyFilters);
+        document.getElementById('status-filter').addEventListener('change', applyFilters);
+
+        document.querySelectorAll('.era-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.era-btn').forEach(b => {
+                    b.classList.remove('bg-sky-600', 'text-white');
+                    b.classList.add('bg-dark-800', 'text-slate-300');
+                });
+                btn.classList.add('bg-sky-600', 'text-white');
+                btn.classList.remove('bg-dark-800', 'text-slate-300');
+                applyFilters();
+            });
+        });
+
+        function applyFilters() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const activeEra = document.querySelector('.era-btn.bg-sky-600').dataset.era;
+            const activeStatus = document.getElementById('status-filter').value;
+
+            const filtered = allEpisodes.filter(ep => {
+                const matchQuery = !query || ep.working_title.toLowerCase().includes(query) || 
+                                   ep.pillar.toLowerCase().includes(query) || 
+                                   ep.era.toLowerCase().includes(query);
+                const matchEra = activeEra === 'all' || ep.era.toLowerCase().includes(activeEra);
+                const matchStatus = activeStatus === 'all' || ep.status === activeStatus;
+                return matchQuery && matchEra && matchStatus;
+            });
+
+            renderCatalog(filtered);
+        }
+
+        // Gate B Review Modal
+        async function openReviewModal(episodeId) {
+            currentReviewId = episodeId;
+            const res = await fetch(`/api/review/${episodeId}`);
+            const data = await res.json();
+
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-ep-number').innerText = episodeId.toUpperCase();
+            
+            // Set Master Video
+            const videoPlayer = document.getElementById('master-video-player');
+            if (data.video_url) {
+                videoPlayer.src = data.video_url;
+                videoPlayer.load();
+            }
+
+            // Set SRT link
+            const srtLink = document.getElementById('srt-download-link');
+            if (data.has_srt) {
+                srtLink.href = data.srt_url;
+                srtLink.style.display = 'inline';
+            } else {
+                srtLink.style.display = 'none';
+            }
+
+            // Set Thumbnails
+            const thumbGrid = document.getElementById('thumbs-grid');
+            if (data.thumbnails && data.thumbnails.length > 0) {
+                thumbGrid.innerHTML = data.thumbnails.map((t, idx) => `
+                    <div class="glass-panel p-2 rounded-xl text-center cursor-pointer border hover:border-sky-400 transition" onclick="selectThumbnail('${t.url}')">
+                        <img src="${t.url}" class="rounded-lg w-full object-cover aspect-video mb-2" alt="Thumb">
+                        <span class="text-xs font-bold text-slate-300">Candidate ${String.fromCharCode(65 + idx)}</span>
+                    </div>
+                `).join('');
+            } else {
+                thumbGrid.innerHTML = '<div class="col-span-3 text-center py-6 text-slate-400">Thumbnails will appear upon generation.</div>';
+            }
+
+            // Set Shorts
+            const shortsList = document.getElementById('shorts-selector-list');
+            const shortsPlayer = document.getElementById('shorts-video-player');
+            if (data.shorts && data.shorts.length > 0) {
+                shortsPlayer.src = data.shorts[0].video_url;
+                shortsPlayer.load();
+                shortsList.innerHTML = data.shorts.map((s, idx) => `
+                    <div class="glass-panel p-3 rounded-xl cursor-pointer hover:border-sky-400 flex items-center justify-between" onclick="playShort('${s.video_url}')">
+                        <div>
+                            <p class="text-xs font-bold text-white">${s.title}</p>
+                            <p class="text-[10px] text-slate-400">${s.duration_sec}s &bull; Vertical 9:16</p>
+                        </div>
+                        <span class="text-xs text-sky-400 font-semibold">&bull; Play</span>
+                    </div>
+                `).join('');
+            } else {
+                shortsList.innerHTML = '<div class="text-xs text-slate-400">Shorts ready to render via pipeline.</div>';
+            }
+
+            // Set SEO
+            document.getElementById('seo-title').value = data.title;
+            document.getElementById('seo-description').value = data.description || '';
+            const tagContainer = document.getElementById('seo-hashtags-container');
+            const defaultTags = ["#EarthHistory", "#PlanetaryScience", "#ScienceDocumentary", "#DeepTime", "#Shorts", "#Space"];
+            tagContainer.innerHTML = (data.tags && data.tags.length > 0 ? data.tags : defaultTags).map(t => `
+                <span class="rounded-full bg-sky-950 border border-sky-800 text-sky-400 px-2.5 py-0.5 text-xs font-semibold">${t}</span>
+            `).join('');
+
+            document.getElementById('review-modal').classList.remove('hidden');
+        }
+
+        function playShort(url) {
+            const player = document.getElementById('shorts-video-player');
+            player.src = url;
+            player.play();
+        }
+
+        function closeReviewModal() {
+            document.getElementById('review-modal').classList.add('hidden');
+            document.getElementById('master-video-player').pause();
+            document.getElementById('shorts-video-player').pause();
+        }
+
+        // Switch Tabs inside Review Modal
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('[id^="tab-btn-"]').forEach(el => {
+                el.classList.remove('border-sky-400', 'text-sky-400');
+                el.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            if (tabId === 'master-video') {
+                document.getElementById('tab-master-video').classList.remove('hidden');
+                document.getElementById('tab-btn-master').classList.add('border-sky-400', 'text-sky-400');
+            } else if (tabId === 'shorts') {
+                document.getElementById('tab-shorts').classList.remove('hidden');
+                document.getElementById('tab-btn-shorts').classList.add('border-sky-400', 'text-sky-400');
+            } else if (tabId === 'thumbnails') {
+                document.getElementById('tab-thumbnails').classList.remove('hidden');
+                document.getElementById('tab-btn-thumbs').classList.add('border-sky-400', 'text-sky-400');
+            } else if (tabId === 'seo') {
+                document.getElementById('tab-seo').classList.remove('hidden');
+                document.getElementById('tab-btn-seo').classList.add('border-sky-400', 'text-sky-400');
+            }
+        }
+
+        // Publishing Hub Actions
+        async function publishTo(platform) {
+            if (!currentReviewId) return;
+            const banner = document.getElementById('publish-status-banner');
+            banner.classList.remove('hidden');
+            banner.className = 'mt-3 p-3 rounded-lg text-xs font-mono bg-sky-950/80 border border-sky-700 text-sky-300';
+            banner.innerText = `Publishing ${currentReviewId} to ${platform.toUpperCase()}...`;
+
+            try {
+                const res = await fetch(`/api/publish/${platform}/${currentReviewId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: document.getElementById('seo-title').value,
+                        description: document.getElementById('seo-description').value
+                    })
+                });
+                const result = await res.json();
+
+                if (result.status === "published" || result.status === "simulated_success" || result.status === "ready_for_upload") {
+                    banner.className = 'mt-3 p-3 rounded-lg text-xs font-mono bg-emerald-950 border border-emerald-700 text-emerald-300';
+                    banner.innerText = `[SUCCESS] ${result.message || 'Published successfully!'}`;
+                } else {
+                    banner.className = 'mt-3 p-3 rounded-lg text-xs font-mono bg-amber-950 border border-amber-700 text-amber-300';
+                    banner.innerText = `[INFO] ${result.message || JSON.stringify(result)}`;
+                }
+            } catch (err) {
+                banner.className = 'mt-3 p-3 rounded-lg text-xs font-mono bg-rose-950 border border-rose-700 text-rose-300';
+                banner.innerText = `[ERROR] Publishing failed: ${err.message}`;
+            }
+        }
+
+        // Generation Trigger & Console Modal
+        async function generateEpisode(episodeId) {
+            const terminal = document.getElementById('terminal-modal');
+            const logBox = document.getElementById('terminal-logs');
+            document.getElementById('terminal-title').innerText = `GENERATING ${episodeId.toUpperCase()}...`;
+            logBox.innerHTML = `<div>[${new Date().toLocaleTimeString()}] Triggering autonomous pipeline...</div>`;
+            terminal.classList.remove('hidden');
+
+            try {
+                await fetch(`/api/generate/${episodeId}`, { method: 'POST' });
+                // Start polling logs
+                if (logPollInterval) clearInterval(logPollInterval);
+                logPollInterval = setInterval(async () => {
+                    const lRes = await fetch(`/api/logs/${episodeId}`);
+                    const lData = await lRes.json();
+                    if (lData.lines && lData.lines.length > 0) {
+                        logBox.innerHTML = lData.lines.map(line => `<div>${line}</div>`).join('');
+                        logBox.scrollTop = logBox.scrollHeight;
+                    }
+                    if (!lData.is_active && lData.lines.length > 0) {
+                        clearInterval(logPollInterval);
+                        fetchCatalog(); // Refresh catalog statuses
+                    }
+                }, 1000);
+            } catch (err) {
+                logBox.innerHTML += `<div class="text-rose-400">[ERROR] Trigger failed: ${err.message}</div>`;
+            }
+        }
+
+        function closeTerminalModal() {
+            document.getElementById('terminal-modal').classList.add('hidden');
+            if (logPollInterval) clearInterval(logPollInterval);
+            fetchCatalog();
+        }
+
+        // Init
+        fetchCatalog();
+    </script>
+</body>
+</html>

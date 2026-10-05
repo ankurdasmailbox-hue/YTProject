@@ -6,6 +6,18 @@ schedule:
   weekday_mode: "batch_unattended"
   weekend_gates: ["saturday", "sunday"]
   buffer_weeks_target: 3
+platforms:
+  simultaneous_publishing: true
+  destinations:
+    - youtube
+    - facebook
+    - instagram
+facebook:
+  page_id: "1279963101878153"
+  page_name: "Earth History Animated"
+instagram:
+  user_id: "17841425908563266"
+  username: "earthhistoryanimated"
 tools:
   llm_provider: "gemini"
   image_provider: "PLACEHOLDER_VERIFY_CURRENT_FREE_TIER"

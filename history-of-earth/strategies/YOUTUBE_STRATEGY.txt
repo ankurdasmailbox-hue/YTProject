@@ -1,0 +1,144 @@
+================================================================================
+HISTORY OF EARTH — YOUTUBE MASTER GROWTH & MONETIZATION STRATEGY
+================================================================================
+Channel: History of Earth
+Audited & Active: 2026-10-03
+Next Automated Strategy Review: 2026-10-18 (15-Day Cadence)
+Status: ACTIVE SPECIFICATION
+
+================================================================================
+1. YOUTUBE MONETIZATION BLUEPRINT & DEADLINES
+================================================================================
+YouTube Partner Program (YPP) Entry Thresholds:
+- CURRENT STANDARD (Apply Before Feb 1, 2027):
+  * 1,000 Subscribers AND
+  * 4,000 Public Watch Hours (trailing 365 days) OR 10,000,000 Shorts Views (trailing 90 days).
+- FUTURE INCREASE (New Applicants From Feb 1, 2027):
+  * 1,000 Subscribers AND
+  * 8,000 Public Watch Hours OR 20,000,000 Shorts Views.
+- CRITICAL TACTICAL IMPLICATION:
+  * Channels accepted BEFORE Feb 1, 2027 are permanently grandfathered into YPP.
+  * Our target YPP application date is JANUARY 15, 2027 (leaves 2-week buffer).
+  * Focus watch hours on 8-12 minute LONG-FORM documentaries; 4,000 hours requires
+    roughly 60,000-80,000 total long-form views, whereas 10M Shorts views is a far
+    steeper hill for a new cold-start channel.
+
+Monetization Revenue Streams:
+1. YouTube AdSense (Display, Overlay, Skippable/Non-Skippable Video Ads):
+   - Category 27 (Education / Science & Technology) commands $7.00 - $14.50 RPM.
+   - In-stream mid-rolls unlocked on videos > 8:00 minutes.
+2. YouTube Shorts Creator Pool Revenue (ongoing ad revenue share).
+3. YouTube Premium Subscription Watch-Time Revenue.
+4. Channel Memberships & Super Thanks (unlocked at Early Access 500 subs / 3,000 hrs).
+
+================================================================================
+2. 2026 ALGORITHM LEVERS & RETENTION ENGINEERING
+================================================================================
+The algorithm optimizes for Cumulative Session Watch Time and Satisfied View Duration.
+
+Core Algorithmic Levers:
+1. The 5-Second Sensory Pattern Interrupt (Sammy's Rule):
+   - Zero slow logo animations or channel introductions.
+   - Start immediately inside the cataclysm or mystery (e.g., magma ocean dissolving,
+     meteor impact mid-strike, pressure dial surging to 200 atm).
+2. The 45-Second Curiosity Loop Engine:
+   - Introduce a scientific paradox or tension every 45 seconds before resolving
+     the previous one.
+   - Pacing target: 125-135 Words Per Minute (WPM) with continuous camera kinetic motion.
+3. Clean Video Mastering (Soft SRT Delivery):
+   - Master video stream contains ZERO burned-in subtitles.
+   - Captions delivered via soft English SRT (YouTube player CC toggle).
+   - Keeps full visual clarity for high-resolution 1080p/1440p playback.
+4. The Shorts-to-Long-Form Conversion Flywheel:
+   - Every long-form episode yields 2-3 viral 9:16 vertical Shorts.
+   - Bottom CTA banner: "FULL STORY LINKED IN CHANNEL" drives top-of-funnel mobile
+     viewers directly into long-form episodes for watch-hour accumulation.
+
+================================================================================
+3. VIDEO FORMATTING, METADATA & PACKAGING RULES
+================================================================================
+A. Master Documentaries:
+   - Aspect Ratio: 16:9 (1920x1080 minimum, mastered to 2560x1440 QHD for VP9/AV1 codec).
+   - Framerate: 30 fps or 60 fps.
+   - Ideal Runtime: 8:00 – 12:30 minutes (qualifies for manual mid-roll ad placement).
+   - Audio: -14 LUFS loudness normalization with mild background ambient score ducked at -20 dB.
+
+B. YouTube Shorts:
+   - Aspect Ratio: 9:16 Vertical (1080x1920).
+   - Duration: 32 – 42 seconds (sweet spot for >100% completion rate).
+   - Canvas: Ambient blurred motion background + centered crisp 16:9 hero stage.
+   - Top Banner: High-contrast yellow/white uppercase text bar.
+
+C. Packaging & A/B Thumbnails:
+   - Every episode generates 3 distinct tested thumbnail candidates (A, B, C).
+   - Formula: One dominant illustrated subject + 3-4 bold impact words max + Era Badge.
+   - Titles: Avoid generic openers like "The History of...".
+     Use: [Specific Event/Cataclysm] — [What Actually Happened / High Stakes]
+     Example: "When a Mars-Sized Planet Smashed into Earth at 25,000 MPH"
+
+D. Dual-Layer Hashtag Architecture (Relevant + Current Trending):
+   YouTube's search, browse features, and Shorts shelf prioritize content through a combination of high-relevance semantic tags and broad trending engagement velocity.
+   We deploy a dual-layer hashtag strategy pairing core evergreen authority with high-velocity trending reach:
+
+   1. Tier 1: Core Evergreen / High-RPM Relevant Hashtags
+      - Purpose: High semantic indexing, deep-time niche authority, and Category 27 advertiser bid matching ($7.00 - $14.50 RPM).
+      - Core Relevant Tags:
+        #EarthHistory #PlanetaryScience #DeepTime #GeologyDocumentary #SpaceDocumentary #Science #AncientEarth #Astrobiology #OriginOfLife
+
+   2. Tier 2: Current Trending & Broad Discovery Hashtags
+      - Purpose: Tapping into YouTube's broad recommendation algorithms, Trending feeds, and Shorts viral discovery loops for wider audience reach.
+      - Current Trending / Broad Virality Tags:
+        #Trending #Viral #LearnOnYouTube #ScienceFacts #DidYouKnow #SpaceFacts #Documentary #Shorts #MindBlown #EducationalContent
+
+   3. Placement & Formatting Rules:
+      - Long-Form Master Episodes:
+        * Volume: 5 to 7 hashtags total in description body (YouTube prominently displays the top 3 above video title or top of description).
+        * Allocation Formula: 3-4 Core Relevant Niche Tags + 2 Current Trending / Broad Educational Discovery Tags.
+        * Standard Bundle: #EarthHistory #PlanetaryScience #GeologyDocumentary #Trending #LearnOnYouTube #ScienceFacts
+        * Policy Guardrail: Never exceed 15 hashtags (YouTube will ignore all tags and flag video as spam under Search & Discovery guidelines).
+      - YouTube Shorts:
+        * Placement: Direct inclusion in title (#Shorts) + 3-5 hashtags in description.
+        * Allocation Formula: Combine #Shorts and high-velocity discovery tags (#Trending, #ScienceFacts) with 2 core topic tags (#EarthHistory, #PlanetaryScience) to capture both search and Shorts shelf traffic.
+
+================================================================================
+4. 15-DAY REVIEW CHECKLIST & PIVOT TRIGGERS
+================================================================================
+Check every 15 days automatically:
+1. Click-Through Rate (CTR) Benchmark:
+   - If CTR < 4.0% after 7 days -> Immediately swap thumbnail to Candidate B or C and
+     test alternate Curiosity-Gap title formula.
+2. Average Percentage Viewed (APV):
+   - If APV < 35% on an 8-min video -> Tighten script pacing in Act 1 & 2; front-load
+     stakes in the first 30 seconds.
+3. Shorts Conversion Rate:
+   - Track traffic source in Studio Analytics: If "Related video" clicks < 3%, revise
+     Shorts bottom CTA banner wording to more aggressive curiosity hook.
+4. Watch-Hour Run Rate:
+   - Compare linear pace toward 4,000 hours against Jan 15, 2027 deadline.
+   - Accelerate long-form publish cadence from 2 to 3 episodes/week if pace lags.
+5. Hashtag & Discovery Velocity Audit:
+   - Review YouTube Studio Traffic Sources -> "YouTube search" and "Suggested videos".
+   - If search impressions stall, rotate Tier 2 trending tags based on YouTube Trends (Explore > Trending / Google Trends Science & Tech).
+   - Ensure trending tags maintain topical alignment with planetary science to preserve viewer satisfaction and high APV.
+================================================================================
+
+[AUTOMATED 15-DAY AUDIT — 2026-10-02 19:57]
+- Status: Audited via Meta Graph API & YouTube Pipeline
+- Live Metrics Snapshot: {"days_until_ypp_change": 104, "target_deadline": "2027-01-15", "current_ypp_bar": "1,000 subs / 4,000 hrs", "post_feb_bar": "1,000 subs / 8,000 hrs"}
+- Tactical Adjustments Applied:
+  * Runway Alert: 104 days remaining before YPP entry requirement doubles from 4,000 to 8,000 hours.
+  * Maintain focus on 8-12 minute long-form episodes (7 acts) to accumulate 4,000 hours.
+  * Continue utilizing 9:16 Shorts with conversion CTA banners ('Full Story on Channel') to funnel mobile search traffic into long-form watch time.
+  * Deploy dual-tier YouTube hashtags: combine high-RPM core relevant tags (#EarthHistory #PlanetaryScience #DeepTime) with current trending discovery tags (#Trending #LearnOnYouTube #ScienceFacts) across master descriptions and Shorts.
+--------------------------------------------------------------------------------
+
+
+[AUTOMATED 15-DAY AUDIT — 2026-10-03 13:47]
+- Status: Audited via Meta Graph API & YouTube Pipeline
+- Live Metrics Snapshot: {"days_until_ypp_change": 103, "target_deadline": "2027-01-15", "current_ypp_bar": "1,000 subs / 4,000 hrs", "post_feb_bar": "1,000 subs / 8,000 hrs"}
+- Tactical Adjustments Applied:
+  * Runway Alert: 103 days remaining before YPP entry requirement doubles from 4,000 to 8,000 hours.
+  * Maintain focus on 8-12 minute long-form episodes (7 acts) to accumulate 4,000 hours.
+  * Continue utilizing 9:16 Shorts with conversion CTA banners ('Full Story on Channel') to funnel mobile search traffic into long-form watch time.
+  * Deploy dual-tier YouTube hashtags: combine high-RPM core relevant tags (#EarthHistory #PlanetaryScience #DeepTime) with current trending discovery tags (#Trending #LearnOnYouTube #ScienceFacts) across master descriptions and Shorts.
+--------------------------------------------------------------------------------

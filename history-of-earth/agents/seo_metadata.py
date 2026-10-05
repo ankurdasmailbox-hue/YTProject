@@ -23,7 +23,28 @@ def generate_ab_titles(era: str, pillar: str, working_title: str) -> List[Dict[s
     norm_era = era.strip().capitalize()
     norm_pillar = pillar.strip().capitalize()
 
-    if norm_era == "Hadean" and norm_pillar == "Map":
+    if norm_era == "Hadean" and ("ending" in norm_pillar.lower() or "bombardment" in norm_pillar.lower()):
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Overturned Consensus",
+                "title": "The Asteroid Storm That Almost Erased Earth — The Late Heavy Bombardment",
+                "rationale": "High-stakes drama confronting the classic sterilization myth vs. subterranean survival."
+            },
+            {
+                "variant": "B",
+                "formula": "The Forensic Detective Mystery",
+                "title": "Did Mountain-Sized Asteroids Sterilize Early Earth — Or Spark Life?",
+                "rationale": "Direct curiosity question triggering cognitive debate on prebiotic delivery vs extinction."
+            },
+            {
+                "variant": "C",
+                "formula": "The High-Stakes Kinetic Event",
+                "title": "When the Sky Fell: Inside the 3.9-Billion-Year-Old Planetary Cataclysm",
+                "rationale": "Visceral sensory stakes appealing to mainstream space and planetary catastrophe viewers."
+            }
+        ]
+    elif norm_era == "Hadean" and norm_pillar == "Map":
         return [
             {
                 "variant": "A",
@@ -65,6 +86,27 @@ def generate_ab_titles(era: str, pillar: str, working_title: str) -> List[Dict[s
                 "rationale": "Documentary-authoritative with visceral sensory contrast."
             }
         ]
+    elif norm_era == "Hadean" and "life" in norm_pillar.lower():
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Paradox",
+                "title": "Life Didn't Start in a Pond — It Began in Dead Rock 4.2 Billion Years Ago",
+                "rationale": "Directly confronts the Darwin 'warm little pond' myth and introduces the hydrothermal rock pore reality."
+            },
+            {
+                "variant": "B",
+                "formula": "The Forensic Detective Mystery",
+                "title": "The Genesis Battery: How Ancient Seabed Chimneys Forged the First Living Code",
+                "rationale": "High curiosity and scientific intrigue connecting mineral physics to the origin of life."
+            },
+            {
+                "variant": "C",
+                "formula": "The High-Stakes Kinetic Event",
+                "title": "The Planet Before Life: Inside Earth's 4,000-Meter Abyssal Nursery",
+                "rationale": "Atmospheric, deep-sea mystery and extreme environment scale for documentary viewers."
+            }
+        ]
     elif norm_era == "Hadean" and ("air" in norm_pillar.lower() or "ocean" in norm_pillar.lower()):
         return [
             {
@@ -84,6 +126,27 @@ def generate_ab_titles(era: str, pillar: str, working_title: str) -> List[Dict[s
                 "formula": "The High-Stakes Kinetic Event",
                 "title": "When a 200-Atmosphere Steam Sky Collapsed into 1,000 Years of Boiling Rain",
                 "rationale": "Extreme physical scale and astronomical consequence that hooks lovers of hard science documentaries."
+            }
+        ]
+    elif norm_era == "Hadean" and ("leap" in norm_pillar.lower() or "zircon" in norm_pillar.lower()):
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Overturned Consensus",
+                "title": "The 4.4-Billion-Year-Old Rock That Broke Geology — The Zircon Code",
+                "rationale": "Directly confronts consensus, highlights the oldest terrestrial material, and triggers high curiosity."
+            },
+            {
+                "variant": "B",
+                "formula": "High-Intent Search Authority",
+                "title": "Earth Had Oceans 4.4 Billion Years Ago: Inside the Oldest Rock on Earth",
+                "rationale": "High-volume evergreen search keywords ('oldest rock on Earth', 'oceans 4.4 billion years')."
+            },
+            {
+                "variant": "C",
+                "formula": "The Forensic Detective Mystery",
+                "title": "Why 99.9% of Earth's First Crust Vanished — And the One Crystal That Survived",
+                "rationale": "Extreme statistical drama and forensic investigation narrative."
             }
         ]
     else:
@@ -135,28 +198,64 @@ def generate_metadata(
         "Look at the ground beneath your feet. Four billion years ago, it did not exist. Here is what happened."
     ]
 
-    # 3. Viral and High-RPM Hashtags (Attracts premium science/educational advertiser bids)
+    # 3. Viral, High-RPM & Current Trending Hashtags (Combines high-relevance niche with trending discovery)
     viral_hashtags = [
         "#EarthHistory",
         "#PlanetaryScience",
-        "#PlateTectonics",
-        "#GeologyDocumentary",
         "#DeepTime",
+        "#GeologyDocumentary",
         "#SpaceDocumentary",
-        "#Astrobiology",
-        "#Pangaea",
-        "#Hadean",
-        "#Science"
+        "#Science",
+        "#Trending",
+        "#LearnOnYouTube",
+        "#ScienceFacts",
+        "#DidYouKnow"
     ]
     hashtag_str = " ".join(viral_hashtags)
+
+    norm_pillar = pillar.strip().lower()
+    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+        context_desc = (
+            "Three point nine billion years ago, a cosmic gravitational resonance triggered the Late Heavy Bombardment: "
+            "over twenty thousand mountain-sized asteroids hammered the infant Earth. "
+            "Discover the peer-reviewed forensic investigation into whether this planetary catastrophe sterilized early life, "
+            "or if subterranean hydrothermal aquifers became the ultimate biological sanctuary."
+        )
+    elif "leap" in norm_pillar or "zircon" in norm_pillar:
+        context_desc = (
+            "Over 99.9% of Earth's earliest crust was completely destroyed by boiling magma and meteorite bombardment. "
+            "Discover the forensic scientific investigation into Western Australia's Jack Hills zircons: "
+            "how a microscopic mineral grain preserved oxygen isotopes and titanium thermometers proving cool liquid oceans "
+            "and proto-continents existed 4.4 billion years ago."
+        )
+    elif "life" in norm_pillar:
+        context_desc = (
+            "Before cells existed, deep-sea alkaline hydrothermal chimneys forged the world's first natural proton batteries. "
+            "Discover how inorganic mineral cavities catalyzed the transition from dead rock to self-replicating RNA code, "
+            "giving birth to LUCA—the ancestor of all life on Earth."
+        )
+    elif "air" in norm_pillar or "ocean" in norm_pillar:
+        context_desc = (
+            "Four point four billion years ago, Earth was wrapped in a 200-atmosphere vault of supercritical steam and toxic sulfur. "
+            "Discover how atmospheric cooling triggered centuries of torrential boiling downpours, filling Earth's first scalding emerald-green ocean."
+        )
+    elif norm_pillar == "map":
+        context_desc = (
+            "Before continents wandered the globe, Earth was trapped in a single, unbroken rocky shell capping a boiling mantle. "
+            "Discover the forensic scientific detective story of how the primordial 'stagnant lid' was shattered, "
+            "how the first subduction zone ignited, and how the ancient ancestors of Pangaea were born 4.4 billion years ago."
+        )
+    else:
+        context_desc = (
+            "Four and a half billion years ago, Earth was hammered out inside a planetary furnace. "
+            "From the giant collision with Theia to the cooling of the magma ocean, discover the violent origin of our world."
+        )
 
     # 4. Description Body
     description_lines = [
         description_hooks[0],
         "",
-        "Before continents wandered the globe, Earth was trapped in a single, unbroken rocky shell capping a boiling mantle. "
-        "Discover the forensic scientific detective story of how the primordial 'stagnant lid' was shattered, "
-        "how the first subduction zone ignited, and how the ancient ancestors of Pangaea were born 4.4 billion years ago.",
+        context_desc,
         "",
         hashtag_str,
         "",
@@ -184,8 +283,76 @@ def generate_metadata(
     description = "\n".join(description_lines)
 
     # 5. High-RPM & Search Discoverability Tags
-    norm_pillar = pillar.strip().lower()
-    if "air" in norm_pillar or "ocean" in norm_pillar:
+    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+        tags = [
+            "late heavy bombardment",
+            "asteroid impact earth",
+            "did asteroids sterilize earth",
+            "planetary science documentary",
+            "nice model solar system",
+            "lunar cataclysm apollo",
+            "abramov mojzsis 2009",
+            "hadean eon documentary",
+            "history of earth",
+            "deep time geology",
+            "origin of life asteroids",
+            "earth impact history",
+            "geology documentary",
+            "ancient earth",
+            "space documentary",
+            "prebiotic chemistry",
+            "science documentary",
+            "planetary formation",
+            "solar system migration",
+            "extinction event"
+        ]
+    elif "leap" in norm_pillar or "zircon" in norm_pillar:
+        tags = [
+            "oldest rock on earth",
+            "jack hills zircon",
+            "how old is earth",
+            "4.4 billion year old rock",
+            "zircon crystals geology",
+            "cool early earth",
+            "hadean eon documentary",
+            "formation of earth",
+            "history of earth",
+            "shrimp mass spectrometry",
+            "uranium lead dating",
+            "delta 18O oxygen isotopes",
+            "ancient earth documentary",
+            "geology documentary",
+            "planetary science documentary",
+            "first continents on earth",
+            "earth history documentary",
+            "origin of continents",
+            "deep time geology",
+            "space documentary"
+        ]
+    elif "life" in norm_pillar:
+        tags = [
+            "origin of life",
+            "how did life begin",
+            "abiogenesis explained",
+            "alkaline hydrothermal vents",
+            "lost city hydrothermal field",
+            "last universal common ancestor",
+            "luca biology",
+            "proton motive force origin of life",
+            "hadean life",
+            "prebiotic chemistry",
+            "rna world hypothesis",
+            "first living cell",
+            "deep sea hydrothermal vents",
+            "serpentinization origin of life",
+            "nick lane origin of life",
+            "michael russell hydrothermal",
+            "ancient earth documentary",
+            "planetary science documentary",
+            "astrobiology documentary",
+            "history of earth"
+        ]
+    elif "air" in norm_pillar or "ocean" in norm_pillar:
         tags = [
             "first ocean on earth",
             "how did earth get water",

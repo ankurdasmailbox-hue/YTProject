@@ -9,6 +9,7 @@ Adopts YouTube CTR engineering principles:
 """
 
 import os
+import math
 from typing import Dict, List, Any
 from PIL import Image, ImageDraw, ImageFont
 
@@ -99,7 +100,88 @@ def generate_thumbnails(
     font_main, font_sub, font_badge = get_fonts(main_size=78, sub_size=36, badge_size=24)
 
     norm_pillar = pillar.strip().lower()
-    if "air" in norm_pillar or "ocean" in norm_pillar:
+    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+        candidates = [
+            {
+                "suffix": "candidate_a",
+                "focal": "asteroid_impact",
+                "bg_plate": "hadean_asteroid_bombardment_ocean.jpg",
+                "curiosity_title": "DID LIFE SURVIVE?",
+                "subtext": "THE LATE BOMBARDMENT",
+                "sub_color": (249, 115, 22)  # Molten orange
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "lunar_cataclysm",
+                "bg_plate": "late_bombardment.jpg",
+                "curiosity_title": "EARTH BOMBED",
+                "subtext": "3.9 BILLION YRS AGO",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "sterilization_paradox",
+                "bg_plate": "life_spark_cliffhanger.jpg",
+                "curiosity_title": "RESET THE CLOCK?",
+                "subtext": "OR SPARKED BIOLOGY",
+                "sub_color": (56, 189, 248)  # Electric Cyan
+            }
+        ]
+    elif "leap" in norm_pillar or "zircon" in norm_pillar:
+        candidates = [
+            {
+                "suffix": "candidate_a",
+                "focal": "zircon_crystal",
+                "bg_plate": "jack_hills_zircon.jpg",
+                "curiosity_title": "4.4B YEAR CLUE",
+                "subtext": "SCIENCE WAS WRONG",
+                "sub_color": (56, 189, 248)  # Electric Cyan
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "atomic_clock",
+                "bg_plate": "jack_hills_zircon.jpg",
+                "curiosity_title": "OLDEST ROCK?",
+                "subtext": "THE ZIRCON CODE",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "cool_oceans",
+                "bg_plate": "hadean_emerald_sea_surface.jpg",
+                "curiosity_title": "COOL OCEANS?",
+                "subtext": "4.4 BILLION YRS AGO",
+                "sub_color": (74, 222, 128)  # Bright Emerald
+            }
+        ]
+    elif "life" in norm_pillar:
+        candidates = [
+            {
+                "suffix": "candidate_a",
+                "focal": "alkaline_spire",
+                "bg_plate": "hadean_alkaline_vent_towers.jpg",
+                "curiosity_title": "DEAD ROCKS?",
+                "subtext": "LEARNED TO CODE",
+                "sub_color": (56, 189, 248)  # Electric Cyan
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "proton_battery",
+                "bg_plate": "hadean_mineral_nanopores_cell.jpg",
+                "curiosity_title": "LIFE'S BATTERY",
+                "subtext": "FORGED IN STONE",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "first_protocell",
+                "bg_plate": "hadean_first_protocell.jpg",
+                "curiosity_title": "BEFORE LUCA",
+                "subtext": "4.2B YEAR GENESIS",
+                "sub_color": (74, 222, 128)  # Emerald green
+            }
+        ]
+    elif "air" in norm_pillar or "ocean" in norm_pillar:
         candidates = [
             {
                 "suffix": "candidate_a",
@@ -172,17 +254,33 @@ def generate_thumbnails(
             }
         ]
 
-    for cand in candidates:
-        img = Image.new("RGB", (width, height), color=DEFAULT_PALETTE["sky_hell"])
-        draw = ImageDraw.Draw(img)
+    assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "scenes")
 
-        # 1. Atmospheric Gradient
-        for y in range(height):
-            ratio = y / height
-            r = int(25 + 175 * ratio)
-            g = int(10 + 45 * ratio)
-            b = int(12 + 15 * ratio)
-            draw.line([(0, y), (width, y)], fill=(r, g, b))
+    for cand in candidates:
+        bg_plate_name = cand.get("bg_plate")
+        bg_plate_path = os.path.join(assets_dir, bg_plate_name) if bg_plate_name else None
+        
+        if bg_plate_path and os.path.exists(bg_plate_path):
+            base = Image.open(bg_plate_path).convert("RGB")
+            base = base.resize((width, height), Image.Resampling.LANCZOS)
+            dark_mask = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+            d_draw = ImageDraw.Draw(dark_mask)
+            for x_i in range(int(width * 0.75)):
+                alpha = int(210 * (1.0 - (x_i / (width * 0.75)) ** 1.5))
+                d_draw.line([(x_i, 0), (x_i, height)], fill=(8, 12, 20, alpha))
+            img = Image.alpha_composite(base.convert("RGBA"), dark_mask).convert("RGB")
+            draw = ImageDraw.Draw(img)
+        else:
+            img = Image.new("RGB", (width, height), color=DEFAULT_PALETTE["sky_hell"])
+            draw = ImageDraw.Draw(img)
+
+            # 1. Atmospheric Gradient
+            for y in range(height):
+                ratio = y / height
+                r = int(25 + 175 * ratio)
+                g = int(10 + 45 * ratio)
+                b = int(12 + 15 * ratio)
+                draw.line([(0, y), (width, y)], fill=(r, g, b))
 
         # 2. Hero Visual Focal Subject
         if cand["focal"] == "emerald_sea":
@@ -231,6 +329,46 @@ def generate_thumbnails(
                 draw.arc([cx - 240, cy - 240, cx + 240, cy + 240], start=35 * g_i, end=35 * g_i + 50, fill=(255, 100, 30), width=5)
             # Center lock symbol / thermal glow
             draw.ellipse([cx - 80, cy - 80, cx + 80, cy + 80], fill=(255, 120, 30))
+
+        elif cand["focal"] == "asteroid_impact":
+            # Mountain-sized asteroid fireball detonating into ocean
+            cx, cy = width - 360, 300
+            # Expanding thermal shockwaves
+            for r in [280, 220, 160, 100]:
+                draw.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(255, 120, 30, 180), width=4)
+            # Incandescent core
+            draw.ellipse([cx - 70, cy - 70, cx + 70, cy + 70], fill=(255, 250, 220))
+            # Blazing plasma tail streaking from top right
+            draw.polygon([(cx, cy), (width, cy - 260), (width, cy - 180)], fill=(255, 80, 20))
+            draw.polygon([(cx, cy), (width, cy - 240), (width, cy - 200)], fill=(255, 220, 100))
+
+        elif cand["focal"] == "lunar_cataclysm":
+            # Scarred cratered Moon with glowing impact rings
+            cx, cy = width - 360, 290
+            draw.ellipse([cx - 210, cy - 210, cx + 210, cy + 210], fill=(60, 65, 80), outline=(200, 215, 230), width=5)
+            # Imbrium / Serenitatis impact basins with thermal orange glow
+            draw.ellipse([cx - 110, cy - 90, cx - 10, cy + 10], fill=(120, 45, 25), outline=(255, 140, 40), width=3)
+            draw.ellipse([cx + 20, cy - 40, cx + 110, cy + 50], fill=(100, 40, 20), outline=(255, 160, 50), width=3)
+            # Impact ray streaks
+            for deg in range(0, 360, 40):
+                rad = math.radians(deg)
+                draw.line([(cx + int(math.cos(rad) * 90), cy + int(math.sin(rad) * 90)),
+                           (cx + int(math.cos(rad) * 190), cy + int(math.sin(rad) * 190))],
+                          fill=(180, 195, 210), width=2)
+
+        elif cand["focal"] == "sterilization_paradox":
+            # Subterranean geothermal fracture network sheltering life
+            cx, cy = width - 350, 310
+            draw.ellipse([cx - 220, cy - 220, cx + 220, cy + 220], fill=(15, 25, 40))
+            # Glowing cyan/emerald biological hydrothermal channels
+            for f_i in range(-3, 4):
+                draw.line([(cx + f_i * 45, cy - 180), (cx + f_i * 20, cy), (cx + f_i * 50, cy + 180)],
+                          fill=(56, 189, 248), width=5)
+                draw.line([(cx + f_i * 45, cy - 180), (cx + f_i * 20, cy), (cx + f_i * 50, cy + 180)],
+                          fill=(74, 222, 128), width=2)
+            # Protective basalt crust ceiling
+            draw.polygon([(cx - 240, cy - 220), (cx + 240, cy - 220), (cx + 240, cy - 130), (cx - 240, cy - 130)],
+                         fill=(35, 40, 55))
 
         elif cand["focal"] == "the_first_crack":
             # Tectonic rupture split with molten abyss

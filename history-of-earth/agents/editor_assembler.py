@@ -429,44 +429,50 @@ def assemble_full_movie(
     ]
     subprocess.run(concat_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
 
-    # 2. Final Audio Mixing & Optional Subtitle Burn-In
+    # 2. Master Audio Loudness (-14 LUFS YouTube standard) & 1440p (QHD VP9-forcing) Video Mastering
+    # Audio: Prevents amix 50% attenuation, mixes ambient score, and normalizes to -14.0 LUFS / -1.5 dBTP
+    audio_filter = (
+        "[1:a]volume=0.14[bg_music];"
+        "[0:a][bg_music]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[mix_raw];"
+        "[mix_raw]loudnorm=I=-14.0:LRA=7.0:TP=-1.5[aout]"
+    )
+
     if burn_subtitles and srt_path and os.path.exists(srt_path):
         srt_rel = os.path.basename(srt_path)
-        filter_complex = (
-            f"[1:a]volume=0.18[bg_music];"
-            f"[0:a][bg_music]amix=inputs=2:duration=first[aout];"
-            f"[0:v]subtitles={srt_rel}:force_style='FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,MarginV=28,Alignment=2'[vout]"
+        video_filter = (
+            f"[0:v]subtitles={srt_rel}:force_style='FontSize=24,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=3,MarginV=38,Alignment=2',"
+            f"scale=2560:1440:flags=lanczos,unsharp=3:3:0.3:3:3:0.0[vout]"
         )
-        final_cmd = [
-            FFMPEG_EXE, "-y",
-            "-i", unsubbed_video,
-            "-i", ambient_music_path.replace("\\", "/"),
-            "-filter_complex", filter_complex,
-            "-map", "[vout]",
-            "-map", "[aout]",
-            "-c:v", "libx264",
-            "-preset", "faster",
-            "-crf", "19",
-            "-c:a", "aac",
-            "-b:a", "192k",
-            output_mp4_path
-        ]
     else:
-        # Clean cinematic output (No subtitles burned in)
-        filter_complex = "[1:a]volume=0.18[bg_music];[0:a][bg_music]amix=inputs=2:duration=first[aout]"
-        final_cmd = [
-            FFMPEG_EXE, "-y",
-            "-i", unsubbed_video,
-            "-i", ambient_music_path.replace("\\", "/"),
-            "-filter_complex", filter_complex,
-            "-map", "0:v",
-            "-map", "[aout]",
-            "-c:v", "copy",
-            "-c:a", "aac",
-            "-b:a", "192k",
-            "-shortest",
-            output_mp4_path
-        ]
+        # Clean cinematic output (No subtitles burned in) with 1440p VP9-trigger scaling
+        video_filter = "[0:v]scale=2560:1440:flags=lanczos,unsharp=3:3:0.3:3:3:0.0[vout]"
+
+    filter_complex = f"{video_filter};{audio_filter}"
+
+    final_cmd = [
+        FFMPEG_EXE, "-y",
+        "-i", unsubbed_video,
+        "-i", ambient_music_path.replace("\\", "/"),
+        "-filter_complex", filter_complex,
+        "-map", "[vout]",
+        "-map", "[aout]",
+        "-c:v", "libx264",
+        "-preset", "faster",
+        "-crf", "15",
+        "-profile:v", "high",
+        "-level", "5.1",
+        "-g", "30",
+        "-keyint_min", "30",
+        "-sc_threshold", "0",
+        "-color_primaries", "bt709",
+        "-color_trc", "bt709",
+        "-colorspace", "bt709",
+        "-c:a", "aac",
+        "-b:a", "320k",
+        "-ar", "48000",
+        "-shortest",
+        output_mp4_path
+    ]
 
     start_time = time.time()
     subprocess.run(final_cmd, cwd=work_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)

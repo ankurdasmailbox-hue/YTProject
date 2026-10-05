@@ -31,7 +31,7 @@ SHORTS_PRESETS_HADEAN_01 = [
         "start_time_sec": 0,
         "duration_sec": 38,
         "cta_text": "WATCH FULL DOCUMENTARY ON CHANNEL",
-        "hashtags": ["#Shorts", "#Space", "#PlanetaryScience", "#EarthHistory", "#Catastrophe", "#Science"]
+        "hashtags": ["#Shorts", "#Trending", "#LearnOnYouTube", "#EarthHistory", "#PlanetaryScience", "#ScienceFacts"]
     },
     {
         "short_id": "short_02_zircon_paradox",
@@ -41,7 +41,30 @@ SHORTS_PRESETS_HADEAN_01 = [
         "start_time_sec": 119,
         "duration_sec": 35,
         "cta_text": "FULL INVESTIGATION IN LINKED VIDEO",
-        "hashtags": ["#Shorts", "#Geology", "#AncientEarth", "#ScienceDocumentary", "#Zircon", "#Mystery"]
+        "hashtags": ["#Shorts", "#Trending", "#ScienceFacts", "#Geology", "#AncientEarth", "#DidYouKnow"]
+    }
+]
+
+SHORTS_PRESETS_HADEAN_02 = [
+    {
+        "short_id": "short_01_stagnant_lid",
+        "title": "Earth Had No Tectonic Plates For 500 Million Years",
+        "banner_text": "EARTH HAD NO TECTONIC PLATES",
+        "sub_banner": "THE 500M YEAR STAGNANT LID",
+        "start_time_sec": 0,
+        "duration_sec": 38,
+        "cta_text": "WATCH FULL DOCUMENTARY ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#LearnOnYouTube", "#PlateTectonics", "#Geology", "#EarthHistory"]
+    },
+    {
+        "short_id": "short_02_heat_pipe_earth",
+        "title": "How Volcanic Heat Pipes Cooled Infant Earth",
+        "banner_text": "THE HEAT-PIPE FURNACE",
+        "sub_banner": "BEFORE CONTINENTS EXISTED",
+        "start_time_sec": 51,
+        "duration_sec": 35,
+        "cta_text": "FULL INVESTIGATION ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#ScienceFacts", "#GeologyDocumentary", "#AncientEarth", "#DeepTime"]
     }
 ]
 
@@ -54,7 +77,7 @@ SHORTS_PRESETS_HADEAN_03 = [
         "start_time_sec": 145,
         "duration_sec": 38,
         "cta_text": "FULL DOCUMENTARY ON CHANNEL",
-        "hashtags": ["#Shorts", "#EarthHistory", "#GreenOcean", "#ScienceDocumentary", "#Geology", "#AncientEarth"]
+        "hashtags": ["#Shorts", "#Trending", "#ScienceFacts", "#EarthHistory", "#Geology", "#DidYouKnow"]
     },
     {
         "short_id": "short_02_poison_atmosphere",
@@ -64,7 +87,98 @@ SHORTS_PRESETS_HADEAN_03 = [
         "start_time_sec": 0,
         "duration_sec": 35,
         "cta_text": "WATCH FULL STORY ON CHANNEL",
-        "hashtags": ["#Shorts", "#Space", "#PlanetaryScience", "#Atmosphere", "#Catastrophe", "#Science"]
+        "hashtags": ["#Shorts", "#Trending", "#LearnOnYouTube", "#PlanetaryScience", "#Atmosphere", "#ScienceFacts"]
+    }
+]
+
+SHORTS_PRESETS_HADEAN_04 = [
+    {
+        "short_id": "short_01_dead_rocks_code",
+        "title": "When Dead Rocks Learned to Code",
+        "banner_text": "HOW DEAD ROCKS LEARNED TO CODE",
+        "sub_banner": "THE 4.2B YEAR HYDROTHERMAL GENESIS",
+        "start_time_sec": 130,
+        "duration_sec": 38,
+        "cta_text": "WATCH FULL STORY ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#OriginOfLife", "#Biology", "#Evolution", "#ScienceFacts"]
+    },
+    {
+        "short_id": "short_02_natural_proton_battery",
+        "title": "Life's First Battery Wasn't Biology",
+        "banner_text": "LIFES FIRST BATTERY WAS ROCK",
+        "sub_banner": "THE 200mV GEOCHEMICAL ENGINE",
+        "start_time_sec": 90,
+        "duration_sec": 36,
+        "cta_text": "FULL INVESTIGATION ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#LearnOnYouTube", "#Biochemistry", "#EarthHistory", "#DidYouKnow"]
+    }
+]
+
+SHORTS_PRESETS_HADEAN_05 = [
+    {
+        "short_id": "short_01_oldest_rock_earth",
+        "title": "The 4.4B-Year-Old Rock That Broke Geology",
+        "banner_text": "THE 4.4 BILLION YR OLD ROCK",
+        "sub_banner": "THE ZIRCON CODE DISCOVERY",
+        "start_time_sec": 140,
+        "duration_sec": 38,
+        "cta_text": "FULL DOCUMENTARY ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#ScienceFacts", "#Geology", "#AncientEarth", "#Zircon"]
+    },
+    {
+        "short_id": "short_02_cool_early_oceans",
+        "title": "Textbooks Were Wrong About Earth's First Ocean",
+        "banner_text": "OCEANS 4.4 BILLION YRS AGO",
+        "sub_banner": "THE IMPOSSIBLE OXYGEN CLUE",
+        "start_time_sec": 190,
+        "duration_sec": 36,
+        "cta_text": "WATCH FULL STORY ON CHANNEL",
+        "hashtags": ["#Shorts", "#Trending", "#LearnOnYouTube", "#EarthHistory", "#Ocean", "#DidYouKnow"]
+    }
+]
+
+SHORTS_PRESETS_HADEAN_06 = [
+    {
+        "short_id": "short_01_asteroid_storm",
+        "title": "The Asteroid Storm That Almost Reset Earth",
+        "banner_text": "THE ASTEROID STORM",
+        "sub_banner": "3.9 BILLION YEARS AGO",
+        "start_time_sec": 65,
+        "duration_sec": 38,
+        "cta_text": "FULL STORY ON HISTORY OF EARTH",
+        "hashtags": [
+            "#Shorts",
+            "#EarthHistory",
+            "#Space",
+            "#Asteroid",
+            "#PlanetaryScience",
+            "#Astronomy",
+            "#Science",
+            "#Extinction",
+            "#DeepTime",
+            "#Cosmos"
+        ]
+    },
+    {
+        "short_id": "short_02_sterilization_paradox",
+        "title": "Did Asteroids Sterilize Earth Or Spark Life?",
+        "banner_text": "STERILIZE OR SPARK LIFE?",
+        "sub_banner": "THE SUBTERRANEAN SANCTUARY",
+        "start_time_sec": 125,
+        "duration_sec": 36,
+        "cta_text": "WATCH FULL STORY ON CHANNEL",
+        "hashtags": [
+            "#Shorts",
+            "#OriginOfLife",
+            "#Science",
+            "#Geology",
+            "#AncientEarth",
+            "#Evolution",
+            "#NASA",
+            "#Astrobiology",
+            "#Viral",
+            "#ScienceFacts"
+        ]
     }
 ]
 
@@ -81,10 +195,10 @@ def render_vertical_short(
     """
     Renders a 1080x1920 vertical Short from 16:9 master footage using CPU-optimized FFmpeg.
     Layout:
-      - Top Banner (0px - 260px): High-contrast title and era indicator.
+      - Top Banner (120px - 280px): High-contrast title and era indicator.
       - Center Stage (656px - 1264px): 1080x608 crisp cinematic 16:9 frame.
       - Background: Ambient blurred, motion-synchronized fill.
-      - Bottom Banner (1660px - 1920px): High-visibility conversion CTA.
+      - Conversion CTA (1320px - 1420px): Calibrated in the mobile UI safe-zone (above YouTube channel handle/title).
     """
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
 
@@ -94,13 +208,9 @@ def render_vertical_short(
     clean_cta = cta_text.replace("'", "").replace(":", "-")
 
     # FFmpeg complex filter chain for vertical mobile delivery
-    # 1. Reset timestamps (input is already trimmed via fast seek -ss and -t)
-    # 2. Split video into blurred background (scale up, crop, boxblur) and sharp centered foreground
-    # 3. Overlay foreground over blurred background
-    # 4. Burn in top header and bottom CTA
     filter_complex = (
         f"[0:v]setpts=PTS-STARTPTS[v0];"
-        f"[0:a]asetpts=PTS-STARTPTS[a0];"
+        f"[0:a]asetpts=PTS-STARTPTS,loudnorm=I=-14.0:LRA=7.0:TP=-1.5[aout];"
         f"[v0]split=2[bg_raw][fg_raw];"
         f"[bg_raw]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=22:5[bg];"
         f"[fg_raw]scale=1080:608[fg];"
@@ -110,9 +220,9 @@ def render_vertical_short(
         # Top Header Text
         f"[b1]drawtext=text='{clean_banner}':fontcolor=white:fontsize=48:x=(w-text_w)/2:y=140:box=0,"
         f"drawtext=text='{clean_sub}':fontcolor=yellow:fontsize=32:x=(w-text_w)/2:y=210:box=0[b2];"
-        # Bottom CTA Banner
-        f"[b2]drawbox=x=40:y=1680:w=1000:h=120:color=red@0.85:t=fill,"
-        f"drawtext=text='{clean_cta}':fontcolor=white:fontsize=38:x=(w-text_w)/2:y=1720:box=0[vout]"
+        # Calibrated Mobile Safe-Zone CTA (right below center stage, avoiding bottom YouTube overlays)
+        f"[b2]drawbox=x=60:y=1320:w=960:h=100:color=red@0.88:t=fill,"
+        f"drawtext=text='{clean_cta}':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=1355:box=0[vout]"
     )
 
     cmd = [
@@ -123,12 +233,15 @@ def render_vertical_short(
         "-i", master_video_path,
         "-filter_complex", filter_complex,
         "-map", "[vout]",
-        "-map", "[a0]",
+        "-map", "[aout]",
         "-c:v", "libx264",
-        "-preset", "veryfast",
-        "-crf", "22",
+        "-preset", "faster",
+        "-crf", "17",
+        "-color_primaries", "bt709",
+        "-color_trc", "bt709",
+        "-colorspace", "bt709",
         "-c:a", "aac",
-        "-b:a", "128k",
+        "-b:a", "320k",
         "-pix_fmt", "yuv420p",
         output_path
     ]
@@ -156,8 +269,16 @@ def generate_episode_shorts(
     results = []
     metadata_list = []
 
-    if "03" in episode_id or "air" in episode_id:
+    if "06" in episode_id or "ending" in episode_id or "bombardment" in episode_id:
+        presets = SHORTS_PRESETS_HADEAN_06
+    elif "05" in episode_id or "leap" in episode_id or "zircon" in episode_id:
+        presets = SHORTS_PRESETS_HADEAN_05
+    elif "04" in episode_id or "life" in episode_id:
+        presets = SHORTS_PRESETS_HADEAN_04
+    elif "03" in episode_id or "air" in episode_id:
         presets = SHORTS_PRESETS_HADEAN_03
+    elif "02" in episode_id or "map" in episode_id:
+        presets = SHORTS_PRESETS_HADEAN_02
     else:
         presets = SHORTS_PRESETS_HADEAN_01
 

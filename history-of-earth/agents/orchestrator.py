@@ -27,6 +27,7 @@ from agents.scriptwriter import write_script
 from agents.retention_engine import audit_full_screenplay
 from agents.thumbnail import generate_thumbnails
 from agents.seo_metadata import generate_metadata
+from agents.tri_platform_packaging import generate_tri_platform_package
 from agents.compliance_qc import needs_ai_disclosure, general_audience_check, check_licence_ledger, VideoSpec, MusicTrackSpec, ScriptSpec
 
 
@@ -114,6 +115,19 @@ def run_pipeline_for_episode(
     )
     print(f"    Primary Title: {meta['title']}")
     print(f"    Generated metadata.json and ab_packaging.json")
+
+    # Tri-Platform Multi-Packaging (YouTube, Facebook, Instagram)
+    tri_pkg = generate_tri_platform_package(
+        episode_id=episode_id,
+        era=era,
+        pillar=pillar,
+        working_title=working_title,
+        hook=hook,
+        approved_claims=qc_facts["approved"],
+        shot_list=screenplay["shot_list"],
+        output_dir=episode_dir
+    )
+    print(f"    Generated tri_platform_package.json for YouTube, Facebook & Instagram")
 
     # 8. Compliance & Policy Audit Gate
     print("\n--> [Phase 7/8] YouTube Policy & Compliance Check...")

@@ -100,7 +100,36 @@ def generate_thumbnails(
     font_main, font_sub, font_badge = get_fonts(main_size=78, sub_size=36, badge_size=24)
 
     norm_pillar = pillar.strip().lower()
-    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+    norm_era = era.strip().lower()
+
+    if "archean" in norm_era or "eoarchean" in norm_era or "acasta" in norm_pillar or "07" in norm_pillar:
+        candidates = [
+            {
+                "suffix": "candidate_a",
+                "focal": "acasta_gneiss",
+                "bg_plate": "acasta_outcrop_geology_expedition.jpg",
+                "curiosity_title": "4.03B YR ROCK",
+                "subtext": "OLDEST ON EARTH",
+                "sub_color": (56, 189, 248)  # Electric Cyan
+            },
+            {
+                "suffix": "candidate_b",
+                "focal": "shrimp_spectrometer",
+                "bg_plate": "shrimp_zircon_acasta_geochronology.jpg",
+                "curiosity_title": "IT SURVIVED?",
+                "subtext": "THE FIRST CRUST",
+                "sub_color": DEFAULT_PALETTE["yellow_glow"]
+            },
+            {
+                "suffix": "candidate_c",
+                "focal": "iceland_rift",
+                "bg_plate": "eoarchean_iceland_protocontinent.jpg",
+                "curiosity_title": "BEFORE PLATES",
+                "subtext": "FIRST CONTINENT",
+                "sub_color": (74, 222, 128)  # Bright Emerald
+            }
+        ]
+    elif "ending" in norm_pillar or "bombardment" in norm_pillar:
         candidates = [
             {
                 "suffix": "candidate_a",

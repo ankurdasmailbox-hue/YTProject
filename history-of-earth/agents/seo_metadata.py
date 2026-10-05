@@ -23,7 +23,28 @@ def generate_ab_titles(era: str, pillar: str, working_title: str) -> List[Dict[s
     norm_era = era.strip().capitalize()
     norm_pillar = pillar.strip().capitalize()
 
-    if norm_era == "Hadean" and ("ending" in norm_pillar.lower() or "bombardment" in norm_pillar.lower()):
+    if "archean" in norm_era.lower() or "eoarchean" in norm_era.lower() or ("acasta" in norm_pillar.lower() or "07" in norm_pillar.lower() or ("landscape" in norm_pillar.lower() and "archean" in era.lower())):
+        return [
+            {
+                "variant": "A",
+                "formula": "The Curiosity Gap / Overturned Consensus",
+                "title": "The 4-Billion-Year-Old Rock That Broke Geology — The Acasta Gneiss",
+                "rationale": "High-intrigue mystery focusing on Earth's oldest intact bedrock and the mystery of how it survived."
+            },
+            {
+                "variant": "B",
+                "formula": "High-Intent Search Authority",
+                "title": "The Oldest Rock on Earth: Inside the 4.03 Billion-Year-Old Canadian Shield",
+                "rationale": "High-volume evergreen educational search terms ('oldest rock on Earth', 'Acasta Gneiss', 'Canadian Shield')."
+            },
+            {
+                "variant": "C",
+                "formula": "The Forensic Detective Mystery",
+                "title": "When Earth Made Its First Continent: The 4-Billion-Year-Old Secret of Acasta",
+                "rationale": "Explores the Iceland-type protocontinental model before plate tectonics existed."
+            }
+        ]
+    elif norm_era == "Hadean" and ("ending" in norm_pillar.lower() or "bombardment" in norm_pillar.lower()):
         return [
             {
                 "variant": "A",
@@ -214,7 +235,17 @@ def generate_metadata(
     hashtag_str = " ".join(viral_hashtags)
 
     norm_pillar = pillar.strip().lower()
-    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+    norm_era = era.strip().lower()
+
+    if "archean" in norm_era or "eoarchean" in norm_era or "acasta" in norm_pillar or "07" in norm_pillar:
+        context_desc = (
+            "Four billion years ago, in the sub-zero expanse of Canada's Northwest Territories, "
+            "Earth forged its very first piece of permanent continental crust: the 4.03-billion-year-old Acasta Gneiss. "
+            "Discover the forensic scientific investigation into how tonalite-trondhjemite-granodiorite (TTG) rocks "
+            "formed in an Iceland-like plume setting, and how an indestructible 250-kilometer mantle keel protected "
+            "this ancient craton for four billion years."
+        )
+    elif "ending" in norm_pillar or "bombardment" in norm_pillar:
         context_desc = (
             "Three point nine billion years ago, a cosmic gravitational resonance triggered the Late Heavy Bombardment: "
             "over twenty thousand mountain-sized asteroids hammered the infant Earth. "
@@ -277,13 +308,40 @@ def generate_metadata(
         chapters.append({"time": ts, "title": seg})
 
     description_lines.append("")
-    description_lines.append("🔔 Subscribe to History of Earth and ring the bell to explore all 4.5 billion years of planetary evolution!")
+    description_lines.append("🔔 Subscribe to History of Earth on YouTube for the full deep-time documentary series!")
+    description_lines.append("📲 Connect with our community across social platforms for daily reels, diagrams, and discussions:")
+    description_lines.append("• Facebook: https://www.facebook.com/profile.php?id=1279963101878153")
+    description_lines.append("• Instagram: https://www.instagram.com/earthhistoryanimated/")
+    description_lines.append("")
     description_lines.append(hashtag_str)
 
     description = "\n".join(description_lines)
 
     # 5. High-RPM & Search Discoverability Tags
-    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+    if "archean" in norm_era or "eoarchean" in norm_era or "acasta" in norm_pillar or "07" in norm_pillar:
+        tags = [
+            "oldest rock on earth",
+            "acasta gneiss",
+            "acasta gneiss complex",
+            "4 billion year old rock",
+            "archean eon documentary",
+            "eoarchean",
+            "first continent on earth",
+            "slave craton canada",
+            "ttg rock series",
+            "geology documentary",
+            "shrimp zircon dating",
+            "iceland mantle plume model",
+            "continental crust formation",
+            "deep time geology",
+            "history of earth",
+            "planetary science documentary",
+            "ancient earth",
+            "science documentary",
+            "trending science",
+            "learn on youtube"
+        ]
+    elif "ending" in norm_pillar or "bombardment" in norm_pillar:
         tags = [
             "late heavy bombardment",
             "asteroid impact earth",

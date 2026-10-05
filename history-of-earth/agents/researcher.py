@@ -245,6 +245,45 @@ ACADEMIC_SOURCES_HADEAN_ENDING = [
 ]
 
 
+ACADEMIC_SOURCES_ARCHEAN_LANDSCAPE = [
+    {
+        "text": "The Acasta Gneiss Complex in the Slave craton of the Northwest Territories, Canada, contains tonalitic and granodioritic orthogneisses with zircon igneous crystallization ages of 4.02 to 4.03 billion years, representing the oldest known intact piece of Earth's continental crust.",
+        "source_url": "https://link.springer.com/article/10.1007/s004100050468",
+        "citation": "Bowring & Williams (1999), Contributions to Mineralogy and Petrology 134: Priscoan (4.00-4.03 Ga) orthogneisses from northwestern Canada"
+    },
+    {
+        "text": "Geochemical trace element signatures in 4.02 Ga Acasta felsic rocks show low La/Yb ratios and flat heavy rare earth element patterns, indicating generation by shallow, low-pressure melting of hydrated basaltic plateau crust in an Iceland-like geodynamic setting without modern deep subduction.",
+        "source_url": "https://www.nature.com/articles/ngeo2170",
+        "citation": "Reimink et al. (2014), Nature Geoscience 7: Earth's earliest evolved crust generated in an Iceland-like setting"
+    },
+    {
+        "text": "U-Pb zircon geochronology and hafnium isotope analyses confirm that the Acasta Gneiss preserves evidence of multiple metamorphic episodes and crustal recycling dating back to Earth's earliest evolved crust.",
+        "source_url": "https://en.wikipedia.org/wiki/Acasta_Gneiss",
+        "citation": "Geological Survey of Canada & Wikipedia: Acasta Gneiss Geochronology"
+    },
+    {
+        "text": "Isotopic tracing and zircon geochronology in ancient Archean rocks demonstrate the transition from stagnant-lid plume magmatism to embryonic plate tectonics across the Hadean-Archean boundary.",
+        "source_url": "https://www.nature.com/articles/s41561-018-0206-5",
+        "citation": "Reimink et al. (2018), Nature Geoscience 11: Decoupled zircon Lu-Hf and U-Pb geochronology"
+    },
+    {
+        "text": "The long-term continental survival of the Acasta Gneiss through 4 billion years was enabled by the formation of an exceptionally thick, buoyant subcontinental lithospheric mantle keel under the Slave craton.",
+        "source_url": "https://en.wikipedia.org/wiki/Slave_Craton",
+        "citation": "Slave Craton Tectonic Architecture & Lithospheric Keel (Bleeker 2003)"
+    },
+    {
+        "text": "The Tonalite-Trondhjemite-Granodiorite (TTG) rock series formed the primordial silica-rich, low-density continental nuclei that allowed proto-continents to float above the denser convective mantle.",
+        "source_url": "https://en.wikipedia.org/wiki/Tonalite-trondhjemite-granodiorite",
+        "citation": "Geological Consensus: TTG Crustal Evolution & Petrogenesis"
+    },
+    {
+        "text": "Unverified speculative claim: The Acasta Gneiss was carved into geometric pyramid structures by an unknown ancient extraterrestrial civilization during the Eoarchean.",
+        "source_url": None,
+        "citation": "Unresolved Citation (No peer-reviewed source found)"
+    }
+]
+
+
 def research_episode(era: str, pillar: str) -> Dict[str, List[Dict[str, Optional[str]]]]:
     """
     Researches claims from academic papers and scientific repositories.
@@ -252,6 +291,17 @@ def research_episode(era: str, pillar: str) -> Dict[str, List[Dict[str, Optional
     """
     norm_era = era.strip().capitalize()
     norm_pillar = pillar.strip().lower()
+
+    if "archean" in norm_era.lower() or "eoarchean" in norm_era.lower() or ("acasta" in norm_pillar or "07" in norm_pillar or ("landscape" in norm_pillar and "archean" in era.lower())):
+        claims = [
+            {
+                "text": item["text"],
+                "source_url": item["source_url"],
+                "citation": item["citation"]
+            }
+            for item in ACADEMIC_SOURCES_ARCHEAN_LANDSCAPE
+        ]
+        return {"claims": claims}
 
     if norm_era == "Hadean" and ("ending" in norm_pillar or "bombardment" in norm_pillar):
         claims = [

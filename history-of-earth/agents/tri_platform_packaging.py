@@ -63,7 +63,12 @@ def generate_tri_platform_package(
         "platform": "youtube",
         "primary_title": yt_titles[0],
         "ab_titles": yt_titles,
-        "description": "\n".join(yt_description_lines),
+        "description": "\n".join(yt_description_lines) + (
+            "\n\n--- CONNECT WITH US ACROSS ALL PLATFORMS ---\n"
+            "• Facebook Page: Follow Earth History Animated (https://www.facebook.com/profile.php?id=1279963101878153) for daily infographics & community debates!\n"
+            "• Instagram: Follow @earthhistoryanimated (https://www.instagram.com/earthhistoryanimated/) for daily deep-time reels!\n"
+            "• YouTube: Subscribe to History of Earth for the full series!\n"
+        ),
         "tags": [
             "earth history documentary",
             "planetary science",
@@ -97,6 +102,7 @@ def generate_tri_platform_package(
     # 2. FACEBOOK SPECIFICATIONS & PACKAGING
     # ---------------------------------------------------------
     fb_debate_questions = {
+        "acasta": "Imagine standing on a piece of bedrock older than 99.9% of all rocks on Earth. What would you feel? Drop your thoughts below! 👇",
         "landscape": "What would you do if you could witness this geological inferno from orbit for 60 seconds? Tell us below! 👇",
         "map": "Do you think continental landmasses were required for intelligent life to evolve? Let's discuss! 👇",
         "air": "Could modern humans survive under a 200-atmosphere poison sky with zero oxygen? Drop your thoughts! 👇",
@@ -105,7 +111,7 @@ def generate_tri_platform_package(
         "leap": "Imagine holding a crystal older than Earth's continents. What does that feel like? Drop your reaction! 👇",
         "ending": "Could humanity survive a planetary asteroid bombardment of this scale? Let's discuss in the comments! 👇"
     }
-    debate_q = next((q for k, q in fb_debate_questions.items() if k in norm_pillar), "What fascinates you most about this deep-time discovery? Tell us below! 👇")
+    debate_q = next((q for k, q in fb_debate_questions.items() if k in norm_pillar or ("acasta" in working_title.lower() and k == "acasta")), "What fascinates you most about this deep-time discovery? Tell us below! 👇")
 
     fb_hashtags = [
         "#EarthHistory",
@@ -114,14 +120,16 @@ def generate_tri_platform_package(
         "#Trending",
         "#ViralReels",
         "#DidYouKnow",
-        f"#{era.replace(' ', '')}"
+        f"#{era.replace(' ', '').replace(':', '')}"
     ]
 
     fb_caption = (
         f"{hook} 🌍\n\n"
-        f"During the {era}, Earth underwent one of the most violent transformations in planetary history: {working_title}.\n\n"
-        f"🎬 Watch the full 10-minute deep-time investigation on our YouTube channel: History of Earth.\n\n"
+        f"During the {era}, Earth underwent one of the most fundamental transformations in planetary history: {working_title}.\n\n"
+        f"🎬 Watch the full deep-time investigation on our YouTube channel: History of Earth.\n\n"
         f"💬 {debate_q}\n\n"
+        f"👍 If you enjoyed this video, make sure to LIKE, COMMENT, and FOLLOW our page for daily ancient Earth discoveries!\n"
+        f"🔔 And don't forget to SUBSCRIBE to our YouTube channel, History of Earth, for the full documentary series!\n\n"
         f"{' '.join(fb_hashtags)}"
     )
 
@@ -154,8 +162,9 @@ def generate_tri_platform_package(
         f"{hook}... 🪐✨\n\n"
         f"During the {era}, our planet looked completely alien compared to today. {working_title} changed the course of planetary evolution forever.\n\n"
         f"📌 Save this reel for your deep-time science notes!\n"
-        f"🚀 Send this to a friend who loves planetary science & space mysteries!\n\n"
-        f"Full documentary on our channel: History of Earth (Link in bio)\n\n"
+        f"🚀 Send this to a friend who loves planetary science & geology!\n\n"
+        f"❤️ LIKE, COMMENT, and FOLLOW @earthhistoryanimated for daily deep-time reels!\n"
+        f"🔔 SUBSCRIBE to our YouTube channel, History of Earth, for the full documentary series (Link in bio)!\n\n"
         f"{' '.join(ig_hashtags)}"
     )
 

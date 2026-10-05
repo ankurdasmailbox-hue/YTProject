@@ -86,3 +86,12 @@ hadean_ending_06_act_06,act_06_rendered.mp4,video/mp4,local://procedural_cinemat
 hadean_ending_06_act_07,act_07_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep6,Custom Commercial Production Asset,History of Earth Pipeline,hadean_ending_06
 hadean_ending_06_master_audio,master_narration.mp3,audio/mp3,edge_tts://en-US-ChristopherNeural,Commercial Use Permitted,Microsoft Neural TTS,hadean_ending_06
 hadean_ending_06_mild_soundtrack,mild_background_score.mp3,audio/mp3,local://universal_soundtrack_generator,CC0 Public Domain,Custom Synthesized Mild Soundtrack Bed,hadean_ending_06
+archean_landscape_07_act_01,act_01_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_02,act_02_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_03,act_03_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_04,act_04_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_05,act_05_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_06,act_06_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_act_07,act_07_rendered.mp4,video/mp4,local://procedural_cinematic_engine_ep7,Custom Commercial Production Asset,History of Earth Pipeline,archean_landscape_07
+archean_landscape_07_master_audio,master_narration.mp3,audio/mp3,edge_tts://en-US-ChristopherNeural,Commercial Use Permitted,Microsoft Neural TTS,archean_landscape_07
+archean_landscape_07_mild_soundtrack,mild_background_score.mp3,audio/mp3,local://universal_soundtrack_generator,CC0 Public Domain,Custom Synthesized Mild Soundtrack Bed,archean_landscape_07

@@ -705,17 +705,144 @@ CINEMATIC_SCENES_HADEAN_ENDING = [
 ]
 
 
+CINEMATIC_SCENES_ARCHEAN_LANDSCAPE = [
+    {
+        "scene_id": 1,
+        "title": "THE VANISHED CRADLE",
+        "scene_type": "acasta_river_canadian_tundra",
+        "scene_asset": "assets/scenes/acasta_river_canadian_tundra.jpg",
+        "camera_style": "arctic_aerial_descent_sweep",
+        "mood": "cosmic_mystery",
+        "narration": (
+            "Before continents existed, a relentless ocean of fire and shattering asteroid storms erased every trace of early Earth. "
+            "Look across the vast expanse of modern Earth today. Seven continents. Seven billion people. Solid ground beneath our feet.\n\n"
+            "Four billion years ago, almost none of it existed.\n\n"
+            "Every mountain you have ever climbed, every continent on modern maps, is an infant compared to the age of our world. "
+            "For half a billion years, planetary collisions, magma oceans, and asteroid storms "
+            "recycled every single piece of solid rock back into the molten abyss.\n\n"
+            "Ninety-nine point nine percent of our planet's earliest skin is gone forever.\n\n"
+            "Yet against all odds, in the remote, frozen tundra of Canada's Northwest Territories, along the lonely bends of the Acasta River, "
+            "lies the oldest intact piece of continental crust ever discovered."
+        )
+    },
+    {
+        "scene_id": 2,
+        "title": "EXPEDITION INTO DEEP TIME",
+        "scene_type": "acasta_outcrop_geology_expedition",
+        "scene_asset": "assets/scenes/acasta_outcrop_geology_expedition.jpg",
+        "camera_style": "cratonic_outcrop_geology_dolly",
+        "mood": "internal_furnace",
+        "narration": (
+            "Three hundred kilometers north of Yellowknife, accessible only by floatplane and helicopter, geologists hammered into dark, glacially polished river bluffs.\n\n"
+            "What they found stunned the international scientific community, unlocking a planetary mystery that had baffled geologists for generations.\n\n"
+            "This was not a loose, microscopic sand grain washed into a younger sandstone. "
+            "This was massive, continuous, intact bedrock: an ancient geological formation known as the Acasta Gneiss Complex.\n\n"
+            "Beneath the sub-zero winds of the Canadian Shield, these ancient cliffs had stood for over four billion years. "
+            "They survived four billion winters. They survived tectonic collisions, supercontinents splitting apart, and the crushing weight of two-mile-thick ice sheets. "
+            "This rock was already ancient when complex life took its first breath."
+        )
+    },
+    {
+        "scene_id": 3,
+        "title": "THE ANATOMY OF THE FIRST ROCK",
+        "scene_type": "acasta_ttg_gneiss_macro",
+        "scene_asset": "assets/scenes/acasta_ttg_gneiss_macro.jpg",
+        "camera_style": "macro_gneissic_foliation_tracking",
+        "mood": "atomic_discovery",
+        "narration": (
+            "Look closely at the surface of the Acasta Gneiss. It is striped with alternating light and dark ribbons. Geologists call this metamorphic banding.\n\n"
+            "The white and pink layers are rich in quartz and plagioclase feldspar. The black bands are packed with hornblende and biotite mica.\n\n"
+            "Together, they form a suite of rocks that defined the birth of continental crust: tonalite, trondhjemite, and granodiorite—the legendary TTG series.\n\n"
+            "Unlike oceanic basalt, which is dense and easily swallowed back into the mantle, TTG granites are light, buoyant, and silica-rich. "
+            "This was the exact recipe that allowed continents to float above the mantle like giant granite icebergs. "
+            "How did this molecular prototype of every continent on Earth defy destruction, and what impossible secret is locked inside its minerals?"
+        )
+    },
+    {
+        "scene_id": 4,
+        "title": "THE SHRIMP ATOMIC CLOCK",
+        "scene_type": "shrimp_zircon_acasta_geochronology",
+        "scene_asset": "assets/scenes/shrimp_zircon_acasta_geochronology.jpg",
+        "camera_style": "mass_spectrometer_beam_focus",
+        "mood": "atomic_discovery",
+        "narration": (
+            "How do we prove this rock is four billion years old?\n\n"
+            "Inside the Acasta Gneiss lie microscopic zircon crystals. Using the Sensitive High Resolution Ion Microprobe—known as SHRIMP—geochronologists "
+            "fired focused beams of oxygen ions at individual zircon growth zones.\n\n"
+            "By measuring the radioactive decay of uranium atoms into lead, the atomic clock inside the zircon revealed an astonishing date: 4.02 to 4.03 billion years old.\n\n"
+            "Under cathodoluminescence imaging, these zircons show concentric oscillatory rings—proof that they crystallized directly from a cooling pool of magma four thousand million years ago. "
+            "The debate was over. Acasta was the oldest intact rock on planet Earth."
+        )
+    },
+    {
+        "scene_id": 5,
+        "title": "THE ICELAND PROTOCONTINENT",
+        "scene_type": "eoarchean_iceland_protocontinent",
+        "scene_asset": "assets/scenes/eoarchean_iceland_protocontinent.jpg",
+        "camera_style": "volcanic_rift_plume_upwelling_pan",
+        "mood": "tectonic_rupture",
+        "narration": (
+            "For decades, textbooks taught that continents could only be forged in subduction zones, where tectonic plates grind against each other. "
+            "But four billion years ago, modern plate tectonics did not exist. How did the Acasta granite form?\n\n"
+            "In 2014, geochemical detective work revealed the answer. The rare-earth element patterns in the earliest Acasta rocks were flat—lacking the chemical signature of deep garnet.\n\n"
+            "This proved that Acasta was not formed in a subduction trench. Instead, it formed in a setting resembling modern Iceland: "
+            "a colossal mantle plume pouring magma onto an extraordinarily thick oceanic basalt plateau. "
+            "The weight of the plateau forced hydrated basalt downward, melting its roots at shallow depths to brew the world's very first granitic proto-continent."
+        )
+    },
+    {
+        "scene_id": 6,
+        "title": "THE 4.2-BILLION-YEAR GHOST",
+        "scene_type": "hafnium_isotope_crustal_recycling",
+        "scene_asset": "assets/scenes/hafnium_isotope_crustal_recycling.jpg",
+        "camera_style": "deep_mantle_isotope_plume_tracking",
+        "mood": "continental_majesty",
+        "narration": (
+            "As geologists probed deeper into the Acasta zircons, they uncovered an even more astonishing secret.\n\n"
+            "Using hafnium and neodymium isotopes, researchers realized that the four-billion-year-old magma was not born from pristine mantle. "
+            "It had melted an even older crust: a pre-existing mafic crust that formed 4.2 to 4.3 billion years ago.\n\n"
+            "The Acasta Gneiss is a geological bridge across time. "
+            "It captured the dying thermal memory of the Hadean eon, converting the ashes of the magma ocean into the foundational stones of the Archean world. "
+            "The infant Earth was no longer just melting and resetting. It was building a permanent memory."
+        )
+    },
+    {
+        "scene_id": 7,
+        "title": "THE UNSINKABLE FORTRESS (CLIFFHANGER)",
+        "scene_type": "slave_craton_lithospheric_keel",
+        "scene_asset": "assets/scenes/slave_craton_lithospheric_keel.jpg",
+        "camera_style": "cratonic_keel_orbital_pullout",
+        "mood": "cliffhanger_suspense",
+        "narration": (
+            "Why did this one piece of rock survive when everything else perished?\n\n"
+            "Because beneath the Canadian Shield lies an invisible shield: a deep subcontinental lithospheric mantle keel, extending over two hundred kilometers down into the mantle. "
+            "This thick, buoyant root anchored the Slave Craton, protecting Acasta from mantle currents and planetary collisions. "
+            "The first continent had survived.\n\n"
+            "Next time, on History of Earth: LUCA — The Single Microscopic Ancestor of All Living Things.\n\n"
+            "If you were fascinated by the birth of Earth's oldest rock, subscribe to History of Earth on YouTube, and make sure to follow our official Facebook and Instagram pages at Earth History Animated for daily deep-time discoveries, behind-the-scenes animations, and interactive science discussions!"
+        )
+    }
+]
+
+
 def write_script(
     approved_claims: List[Dict[str, Any]],
     variation_constraints: Optional[Dict[str, Any]] = None,
-    pillar: str = "Map"
+    pillar: str = "Map",
+    era: str = "Hadean",
+    social_outro: bool = False
 ) -> Dict[str, Any]:
     """
     Assembles the 7-scene cinematic movie screenplay with high-retention pacing,
     theatrical acting cues, and the mysterious cliffhanger ending.
     """
     norm_pillar = pillar.strip().lower()
-    if "ending" in norm_pillar or "bombardment" in norm_pillar:
+    norm_era = era.strip().lower()
+
+    if "archean" in norm_era or "eoarchean" in norm_era or ("acasta" in norm_pillar or "07" in norm_pillar or ("landscape" in norm_pillar and "archean" in norm_era)):
+        scenes = CINEMATIC_SCENES_ARCHEAN_LANDSCAPE
+        next_hook = "LUCA: The Single Ancestor of All Living Things"
+    elif "ending" in norm_pillar or "bombardment" in norm_pillar:
         scenes = CINEMATIC_SCENES_HADEAN_ENDING
         next_hook = "The First Solid Rock: The 4-Billion-Year-Old Acasta Gneiss"
     elif "leap" in norm_pillar or "zircon" in norm_pillar:
@@ -740,6 +867,14 @@ def write_script(
 
     for scene in scenes:
         scene_text = scene["narration"].strip()
+        if social_outro and scene["scene_id"] == len(scenes):
+            parts = scene_text.split("Next time, on History of Earth:")
+            base_part = parts[0].strip()
+            scene_text = (
+                f"{base_part}\n\n"
+                "Next time, on History of Earth: LUCA — The Single Microscopic Ancestor of All Living Things.\n\n"
+                "If you enjoyed this deep-time journey, make sure to like, comment, and follow our page for more ancient Earth investigations, and subscribe to our YouTube channel, History of Earth, for the full documentary series!"
+            )
         full_script_blocks.append(f"=== SCENE {scene['scene_id']}: {scene['title']} ===\n{scene_text}")
 
         # Dramatic trailer cadence: ~2.1 words/sec

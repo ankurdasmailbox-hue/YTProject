@@ -182,6 +182,51 @@ SHORTS_PRESETS_HADEAN_06 = [
     }
 ]
 
+SHORTS_PRESETS_ARCHEAN_07 = [
+    {
+        "short_id": "short_01_oldest_intact_rock",
+        "title": "The Oldest Rock on Earth Is 4.03 Billion Years Old",
+        "banner_text": "THE 4.03 BILLION YR OLD ROCK",
+        "sub_banner": "THE CANADIAN SHIELD ACASTA GNEISS",
+        "start_time_sec": 10,
+        "duration_sec": 38,
+        "cta_text": "SUBSCRIBE TO HISTORY OF EARTH ON YT",
+        "hashtags": [
+            "#Shorts",
+            "#EarthHistory",
+            "#Geology",
+            "#AncientEarth",
+            "#Science",
+            "#Trending",
+            "#LearnOnYouTube",
+            "#DidYouKnow",
+            "#Canada",
+            "#ScienceFacts"
+        ]
+    },
+    {
+        "short_id": "short_02_iceland_protocontinents",
+        "title": "How Earth's First Continent Formed Without Plates",
+        "banner_text": "HOW FIRST CONTINENTS FORMED",
+        "sub_banner": "BEFORE PLATE TECTONICS EXISTED",
+        "start_time_sec": 185,
+        "duration_sec": 36,
+        "cta_text": "FOLLOW & SUBSCRIBE FOR FULL DOCS",
+        "hashtags": [
+            "#Shorts",
+            "#Geology",
+            "#PlanetaryScience",
+            "#OriginOfEarth",
+            "#ScienceFacts",
+            "#Trending",
+            "#LearnOnYouTube",
+            "#ExplorePage",
+            "#Evolution",
+            "#DidYouKnow"
+        ]
+    }
+]
+
 
 def render_vertical_short(
     master_video_path: str,
@@ -269,7 +314,9 @@ def generate_episode_shorts(
     results = []
     metadata_list = []
 
-    if "06" in episode_id or "ending" in episode_id or "bombardment" in episode_id:
+    if "07" in episode_id or "acasta" in episode_id or "gneiss" in episode_id:
+        presets = SHORTS_PRESETS_ARCHEAN_07
+    elif "06" in episode_id or "ending" in episode_id or "bombardment" in episode_id:
         presets = SHORTS_PRESETS_HADEAN_06
     elif "05" in episode_id or "leap" in episode_id or "zircon" in episode_id:
         presets = SHORTS_PRESETS_HADEAN_05

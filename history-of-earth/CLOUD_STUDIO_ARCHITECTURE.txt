@@ -1,0 +1,178 @@
+================================================================================
+HISTORY OF EARTH — ZERO-SUBSCRIPTION CLOUD WEB STUDIO ARCHITECTURE & ROADMAP
+================================================================================
+Generated on: 2026-09-29
+Status: Active Blueprint / Ready for Deployment Selection
+
+TABLE OF CONTENTS:
+1. Executive Summary & Goals
+2. Three Zero-Cost Cloud Deployment Options
+   - Option 1: Hugging Face Spaces (100% Cloud / No Credit Card / PC Off)
+   - Option 2: Oracle Cloud Always Free VM (100% Cloud Dedicated VPS / 24GB RAM)
+   - Option 3: Cloudflare Zero Trust Tunnel (Hybrid / Fastest Renders / Global Web URL)
+3. Web Studio Architecture & Feature Specification
+   - Episode Manager (100 Episodes from content_map.csv)
+   - Procedural Video & Shorts Generation Engine
+   - In-Browser Gate B Review Studio
+   - 1-Click Multi-Platform Publishing System
+4. Meta (Facebook & Instagram) API Setup Guide
+   - Requirements & Step-by-Step Meta Developer Guide
+   - Environment Variables & Tokens
+5. Project Progress Snapshot (Episodes 1-3 Live Status & Master Content Map)
+6. Next Steps Upon Return
+
+================================================================================
+1. EXECUTIVE SUMMARY & GOALS
+================================================================================
+Goal: Eliminate the need to ever open an IDE or run terminal commands to produce
+and publish episodes and shorts for the "History of Earth" series.
+
+The User requires:
+- A responsive Web Studio accessible from smartphone, tablet, or laptop.
+- Option to select any of the 100 episodes from content_map.csv and click "Generate".
+- Asynchronous video and shorts rendering with real-time terminal log streaming.
+- Full in-browser Gate B Review (video player, audio waveforms, thumbnail selector).
+- 1-Click publishing buttons:
+  * YouTube (Master 1080p clean video + soft SRT + 9:16 Shorts)
+  * Facebook (Page Video Post + Facebook Reels)
+  * Instagram (Instagram Reels via Meta Graph API)
+- STRICT CONSTRAINT: 100% $0.00 Zero-Subscription approach forever.
+
+================================================================================
+2. THREE ZERO-COST CLOUD DEPLOYMENT OPTIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+OPTION 1: HUGGING FACE SPACES (100% Cloud / No Credit Card / PC Can Be Off)
+--------------------------------------------------------------------------------
+- Description: Host the FastAPI Web Studio inside a Docker container on Hugging Face Spaces.
+- Monthly Cost: $0.00 forever.
+- Hardware Specs: 2 vCPU, 16 GB RAM, 50 GB storage (Basic CPU tier).
+- Credit Card Required: NO.
+- PC Dependency: ZERO. Your laptop can be powered off or in your backpack.
+- Public Web URL: https://huggingface.co/spaces/<your-username>/history-earth-studio
+- Privacy: One-click "Private Space" setting with authentication PIN.
+- Rendering Speed: ~4 to 6 minutes per 1080p episode.
+- Best For: Users who want 100% cloud freedom immediately without submitting credit
+  card details for cloud verification.
+
+--------------------------------------------------------------------------------
+OPTION 2: ORACLE CLOUD "ALWAYS FREE" VM (100% Cloud Dedicated VPS / 24GB RAM)
+--------------------------------------------------------------------------------
+- Description: Host on an Oracle Cloud Infrastructure (OCI) Ampere A1 ARM Compute instance.
+- Monthly Cost: $0.00 forever (Never expires; permanent free tier).
+- Hardware Specs: 4 OCPU ARM Ampere Cores, 24 GB RAM, 200 GB NVMe SSD storage, 10 TB/month free egress.
+- Credit Card Required: YES (Identity verification only at signup; $0 billed).
+- PC Dependency: ZERO. Operates as a 24/7 dedicated Linux server in the cloud.
+- Public Web URL: Custom domain or free DuckDNS (e.g., https://studio.yourname.duckdns.org)
+- Privacy: Full Linux firewall (UFW), SSH key protection, SSL via Let's Encrypt.
+- Rendering Speed: ~3 to 4 minutes per 1080p episode.
+- Storage: Massive 200 GB persistent storage can store 50+ completed episodes & shorts.
+- Best For: Users who want a permanent, high-performance dedicated cloud workstation.
+
+--------------------------------------------------------------------------------
+OPTION 3: CLOUDFLARE ZERO TRUST TUNNEL (Hybrid / Fastest Renders / Global Web URL)
+--------------------------------------------------------------------------------
+- Description: The FastAPI Web Studio runs locally on your PC (using your fast AMD Ryzen
+  AI multi-core CPU), but is securely exposed to the global web via Cloudflare's edge tunnel.
+- Monthly Cost: $0.00 forever.
+- Hardware Specs: Leverages your local PC (fast CPU/GPU rendering, unlimited disk).
+- Credit Card Required: NO.
+- PC Dependency: Local machine must be on/awake during generation.
+- Public Web URL: https://studio.yourname.trycloudflare.com (or your custom domain).
+- Privacy: Cloudflare Zero Trust Access protection (Email OTP or Passcode).
+- Rendering Speed: ~1 to 1.5 minutes per 1080p episode (Ultra Fast: 50-60 fps).
+- Best For: Users who want instant generation speed, zero cloud storage limitations,
+  and zero setup friction, while still accessing the studio from phone or tablet anywhere.
+
+================================================================================
+3. WEB STUDIO ARCHITECTURE & FEATURE SPECIFICATION
+================================================================================
+
+A. Front-End Web Dashboard (Tailwind/HTML5 + WebSocket/SSE):
+   - Episode Catalog: Displays all 100 episodes from content_map.csv categorized by
+     Era (Hadean, Archean, Proterozoic, Paleozoic, Mesozoic, Cenozoic).
+   - Status Badges: [Ready to Generate], [Rendering...], [Gate B Review Ready], [Published].
+   - Controls: [Generate Master Video], [Generate Shorts], [Regenerate Scene].
+   - Live Console: Real-time terminal output stream showing FFmpeg progress, TTS status,
+     and asset assembly.
+   - Gate B Review Suite:
+     * High-definition HTML5 video player for Master MP4 (1080p @ 30fps).
+     * Mobile phone mockup player for 9:16 vertical Shorts.
+     * Thumbnail Candidate Selector (Click to choose thumbnail A, B, or C).
+     * SEO Metadata Editor (Title, Description, Tags, Category).
+   - 1-Click Publishing Hub:
+     * [Publish to YouTube] (Public/Unlisted, Auto-attaches soft SRT subtitles).
+     * [Publish to Facebook] (Page Video post + Facebook Reel).
+     * [Publish to Instagram] (Instagram Reel via Meta Graph API).
+
+B. Back-End Server (FastAPI / Python 3.14):
+   - /api/episodes: Returns JSON of all episodes with current render/publish status.
+   - /api/generate/{id}: Triggers autonomous background pipeline.
+   - /api/stream/{id}: Server-Sent Events (SSE) streaming live logs to browser.
+   - /api/review/{id}: Serves Gate B payload (MP4, SRT, Thumbnails, JSON metadata).
+   - /api/publish/{platform}/{id}: Triggers platform publisher with runtime quota tracking.
+
+================================================================================
+4. META (FACEBOOK & INSTAGRAM) API SETUP GUIDE
+================================================================================
+
+To enable 1-click publishing to Facebook and Instagram from the Web Studio:
+
+1. Facebook Page:
+   - Create a Facebook Page dedicated to "History of Earth".
+2. Instagram Professional Account:
+   - Create or switch your Instagram account to a "Professional / Creator Account".
+   - Link the Instagram account to your Facebook Page in Instagram Settings > Linked Accounts.
+3. Meta for Developers App:
+   - Go to https://developers.facebook.com and create a new App (Type: "Business").
+   - Add Products: "Facebook Login for Business" and "Instagram Graph API".
+   - Permissions needed:
+     * pages_show_list
+     * pages_read_engagement
+     * pages_manage_posts
+     * instagram_basic
+     * instagram_content_publish
+4. Tokens Needed (We will configure these in your .env file):
+   - META_APP_ID=
+   - META_APP_SECRET=
+   - FB_PAGE_ID=
+   - FB_PAGE_ACCESS_TOKEN= (Never-expiring long-lived page token)
+   - IG_USER_ID= (Connected Instagram Business Account ID)
+
+================================================================================
+5. PROJECT PROGRESS SNAPSHOT
+================================================================================
+
+A. Master Content Map (100 Episodes):
+   - File: content_map.csv
+   - 100% clean ASCII (all mojibake and encoding errors audited and purged).
+   - Scaled distribution: 26 Precambrian, 20 Paleozoic, 29 Mesozoic, 25 Cenozoic to Modern.
+
+B. Published Episodes to Date:
+   - Episode 1: Milestone 1 Pilot
+     Live YouTube Link: https://youtu.be/JkW7JcWnEzg
+   - Episode 2: The Magma Ocean & Moon Collision
+     Live YouTube Link: https://youtu.be/Jkw7JcWnEzg
+     Short 1: https://youtube.com/shorts/q7yEw_bY_9s
+     Short 2: https://youtube.com/shorts/oD0N1T5K_2g
+   - Episode 3: Rain of Fire - The First Oceans Form
+     Live YouTube Link: https://youtu.be/d_Xeu3MUHzM
+     Short 1: https://youtube.com/shorts/8bRVmlE8NEc
+     Short 2: https://youtube.com/shorts/X3fOK5cQEZk
+     Gate B Review: review/gate_b_review_ep3.html
+
+C. Quality Standards Enforced:
+   - Zero burned subtitles in master video (YouTube soft SRT attached).
+   - 3D procedural realism, kinetic camera zooms, atmospheric depth layers.
+   - High-CTR dynamic thumbnail generation with 40% font scaling & bounding box safety.
+
+================================================================================
+6. NEXT STEPS UPON USER RETURN
+================================================================================
+1. User indicates choice of Option 1 (Hugging Face Spaces), Option 2 (Oracle Cloud),
+   or Option 3 (Cloudflare Tunnel).
+2. User provides Facebook Page ID and Instagram Account details (or we provide the
+   simple 3-line token helper script).
+3. We deploy the Web Studio and provide the public URL.
+================================================================================

@@ -119,14 +119,22 @@ def get_authenticated_service(
         creds = Credentials.from_authorized_user_file(token_file, SCOPES)
 
     if not creds or not creds.valid:
+        refreshed = False
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
+            try:
+                creds.refresh(Request())
+                refreshed = True
+            except Exception as e:
+                print(f"  [OAuth] Stored token expired or revoked ({e}). Re-authorizing via browser...")
+
+        if not refreshed:
             if not os.path.exists(client_secrets_file):
                 raise FileNotFoundError(
                     f"OAuth client configuration '{client_secrets_file}' not found. "
                     f"Please download it from Google Cloud Console."
                 )
+            print("  [OAuth] Opening browser tab for one-time Google authorization. Please approve access to proceed...")
+            sys.stdout.flush()
             flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file, SCOPES)
             creds = flow.run_local_server(port=0)
 
@@ -134,6 +142,23 @@ def get_authenticated_service(
             token.write(creds.to_json())
 
     return build("youtube", "v3", credentials=creds)
+
+
+def sanitize_tags(raw_tags: List[str], max_len: int = 400) -> List[str]:
+    """Sanitizes tags to adhere to YouTube Data API v3 rules (no hashtags, under 500 chars total)."""
+    sanitized = []
+    current_len = 0
+    for t in raw_tags:
+        t_clean = t.strip().lstrip("#").replace("<", "").replace(">", "").strip()
+        if not t_clean:
+            continue
+        cost = len(t_clean) + (2 if " " in t_clean else 0) + (1 if sanitized else 0)
+        if current_len + cost <= max_len:
+            sanitized.append(t_clean)
+            current_len += cost
+        else:
+            break
+    return sanitized
 
 
 def upload_video(
@@ -149,11 +174,13 @@ def upload_video(
     if not os.path.exists(video_path):
         raise FileNotFoundError(f"Video file not found: {video_path}")
 
+    cleaned_tags = sanitize_tags(metadata.get("tags", []))
+
     body = {
         "snippet": {
             "title": metadata.get("title", "History of Earth Episode"),
             "description": metadata.get("description", ""),
-            "tags": metadata.get("tags", []),
+            "tags": cleaned_tags,
             "categoryId": str(metadata.get("category_id", "27"))  # 27 = Education
         },
         "status": {

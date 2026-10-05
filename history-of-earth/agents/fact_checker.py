@@ -1,4 +1,4 @@
-﻿"""
+"""
 Fact Checker Agent for History of Earth.
 Validates each claim to ensure it has a real, resolvable citation.
 Strict rule: A claim with source_url=None or an unreachable URL goes to rejected, always.
@@ -54,6 +54,7 @@ def check_claims(claims: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]
             rejected.append({
                 "text": text,
                 "source_url": None,
+                "citation": claim.get("citation"),
                 "reason": "Missing citation (source_url is None / unresolved)"
             })
             continue
@@ -65,6 +66,7 @@ def check_claims(claims: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]
             approved.append({
                 "text": text,
                 "source_url": url,
+                "citation": claim.get("citation"),
                 "status_code": status_code,
                 "verification": "VERIFIED_200_OK"
             })
@@ -72,6 +74,7 @@ def check_claims(claims: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]
             rejected.append({
                 "text": text,
                 "source_url": url,
+                "citation": claim.get("citation"),
                 "status_code": status_code,
                 "reason": f"Unreachable source URL: {err_msg}"
             })

@@ -115,8 +115,76 @@ class MetaPublisher:
                 "page_url": f"https://www.facebook.com/profile.php?id={self.fb_page_id}"
             }
 
-        # Live Meta Graph API Video Upload
-        endpoint = f"{GRAPH_API_BASE}/{self.fb_page_id}/videos"
+        # Live Meta Graph API Video Upload via official graph-video endpoint
+        video_endpoint = f"https://graph-video.facebook.com/{GRAPH_API_VERSION}/{self.fb_page_id}/videos"
+        total_bytes = os.path.getsize(video_path)
+
+        # For large videos (> 20 MB), use official Meta Resumable Upload with 15MB chunks
+        if total_bytes > 20 * 1024 * 1024:
+            try:
+                # 1. Start Phase
+                start_data = {
+                    "upload_phase": "start",
+                    "file_size": total_bytes,
+                    "access_token": self.fb_page_token
+                }
+                start_resp = requests.post(video_endpoint, data=start_data, timeout=60).json()
+                if "error" in start_resp:
+                    return {"status": "error", "platform": "facebook", "error_details": start_resp}
+
+                upload_session_id = start_resp["upload_session_id"]
+                video_id = start_resp["video_id"]
+                start_offset = int(start_resp.get("start_offset", 0))
+
+                chunk_size = 15 * 1024 * 1024  # 15 MB chunk
+                with open(video_path, "rb") as vf:
+                    while start_offset < total_bytes:
+                        vf.seek(start_offset)
+                        chunk = vf.read(chunk_size)
+                        transfer_data = {
+                            "upload_phase": "transfer",
+                            "upload_session_id": upload_session_id,
+                            "start_offset": start_offset,
+                            "access_token": self.fb_page_token
+                        }
+                        transfer_files = {"video_file_chunk": chunk}
+                        t_resp = requests.post(video_endpoint, data=transfer_data, files=transfer_files, timeout=300).json()
+                        if "error" in t_resp:
+                            return {"status": "error", "platform": "facebook", "error_details": t_resp}
+
+                        next_offset = int(t_resp.get("start_offset", total_bytes))
+                        if next_offset == start_offset:
+                            break
+                        start_offset = next_offset
+
+                # 3. Finish Phase
+                finish_data = {
+                    "upload_phase": "finish",
+                    "upload_session_id": upload_session_id,
+                    "title": title,
+                    "description": description,
+                    "access_token": self.fb_page_token
+                }
+                if is_reel:
+                    finish_data["video_state"] = "PUBLISHED"
+
+                f_resp = requests.post(video_endpoint, data=finish_data, timeout=60).json()
+                if f_resp.get("success") or "id" in f_resp or video_id:
+                    final_id = f_resp.get("id") or video_id
+                    return {
+                        "status": "published",
+                        "platform": "facebook",
+                        "video_id": final_id,
+                        "url": f"https://www.facebook.com/{final_id}",
+                        "file_size_mb": file_size_mb
+                    }
+                else:
+                    return {"status": "error", "platform": "facebook", "error_details": f_resp}
+
+            except Exception as e:
+                return {"status": "error", "platform": "facebook", "message": f"Resumable upload failed: {e}"}
+
+        # For smaller videos (<= 20 MB, e.g. Reels)
         data = {
             "title": title,
             "description": description,
@@ -128,7 +196,7 @@ class MetaPublisher:
         try:
             with open(video_path, "rb") as video_file:
                 files = {"source": video_file}
-                resp = requests.post(endpoint, data=data, files=files, timeout=300)
+                resp = requests.post(video_endpoint, data=data, files=files, timeout=300)
                 result = resp.json()
 
             if resp.status_code == 200 and "id" in result:

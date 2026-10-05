@@ -94,7 +94,25 @@ def main():
     except Exception as e:
         print(f"  [ERROR] YouTube Auth failed: {e}")
 
-    if yt_service:
+    # Check if YouTube was already published for this episode
+    existing_yt_id = None
+    log_path = os.path.join(PROJECT_ROOT, "output", "social_publishing_log.json")
+    if os.path.exists(log_path):
+        try:
+            with open(log_path, "r", encoding="utf-8") as lf:
+                l_data = json.load(lf)
+                for entry in reversed(l_data.get("posts", [])):
+                    if entry.get("episode_id") == episode_id and entry.get("youtube", {}).get("master_video_id"):
+                        existing_yt_id = entry["youtube"]["master_video_id"]
+                        results["youtube"] = entry["youtube"]
+                        break
+        except Exception:
+            pass
+
+    if existing_yt_id:
+        print(f"  [OK] Master YouTube Video already live: https://youtu.be/{existing_yt_id}")
+        print(f"  [OK] Preserving {len(results['youtube'].get('shorts', []))} live YouTube Shorts (Skipping duplicate upload).")
+    elif yt_service:
         yt_metadata = {
             "title": yt_spec.get("primary_title", "The 4-Billion-Year-Old Rock That Broke Geology — The Acasta Gneiss"),
             "description": yt_spec.get("description", "Deep time planetary science investigation."),
